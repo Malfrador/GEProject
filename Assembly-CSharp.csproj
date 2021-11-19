@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Peep.cs" />
+    <Compile Include="Assets\Scripts\WallTile.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

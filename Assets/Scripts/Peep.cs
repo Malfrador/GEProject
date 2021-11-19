@@ -22,7 +22,7 @@ public class Peep : MonoBehaviour
     private Vector3 desiredLocation = new Vector3(0, 0, 0); //Here we save where the Peep is supposed to move to during the visual moving that gets performed in Update()
     private bool moving = false; //Gets changed when the Peep is actually moving visually
     private char lookDirection = 'N';
-    public int moveFrequency = 120;
+    public int moveFrequency = 120; //How high moveCounter has to be before the peep makes the next step => How long the peep waits inbetween steps
     public int moveSpeed = 1; //The time it takes for a peep to move from one tile to another
     public Tilemap tileMap;
 
@@ -130,12 +130,12 @@ public class Peep : MonoBehaviour
 
     private bool isValidSpot(Sprite wallSpriteToCheck, Vector3Int positionToCheck, Tilemap tilemapForSprite)
     {
-
-        if(tilemapForSprite.GetSprite(positionToCheck) != wallSpriteToCheck)
+        
+        if(tilemapForSprite.GetTile(positionToCheck).GetType().ToString() == "WallTile")
         {
-            return true;
+            return false;
         }
 
-        return false;
+        return true;
     }
 }
