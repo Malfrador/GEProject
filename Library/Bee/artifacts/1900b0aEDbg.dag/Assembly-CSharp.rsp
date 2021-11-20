@@ -341,6 +341,7 @@
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/UnityEngine.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/VSSettingsProvider.ref.dll"
 "Assets/Scripts/Peep.cs"
+"Assets/Scripts/TileWallController.cs"
 "Assets/Scripts/WallTile.cs"
 -langversion:8.0
 
