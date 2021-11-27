@@ -340,8 +340,12 @@
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/UnityEngine.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/VSSettingsProvider.ref.dll"
-"Assets/Scripts/Peep.cs"
-"Assets/Scripts/TileWallController.cs"
+"Assets/Scripts/Peep/Jobs/JobBase.cs"
+"Assets/Scripts/Peep/Jobs/Miner.cs"
+"Assets/Scripts/Peep/Jobs/PeepMovement.cs"
+"Assets/Scripts/Peep/Jobs/PeepTileInteraction.cs"
+"Assets/Scripts/Peep/Peep.cs"
+"Assets/Scripts/TileController.cs"
 "Assets/Scripts/WallTile.cs"
 -langversion:8.0
 
