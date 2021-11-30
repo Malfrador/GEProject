@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class TileController : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class TileController : MonoBehaviour
     //So you might have an Array with an entry at '2' and then the next one at '5' with 3 free spaces inbetween
     //But at the moment i dont know another way to centrally control the peep tile hits
     private int[,] hitData = new int[100, 100]; //Magic Number yey
+
+    public Tile basicBackgroundTile; //This is for scripts to replace a tile if the powerup (for example the miner powerup) is exhausted and we want to replace the pickaxe tile with a normal background
 
     public Sprite pickaxeTileSprite; //We use a bunch of public Sprites to set what sprite does what logic function. Then the individual jobs from peep can just access theses sprites
     public string pickaxeScript; //And the script associated with the pickaxeTile

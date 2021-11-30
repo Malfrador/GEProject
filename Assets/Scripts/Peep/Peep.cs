@@ -37,7 +37,8 @@ public class Peep : MonoBehaviour
         for(int i = 0; i < jobs.Count; i++)
         {
             JobBase jobInstance = jobs[i] as JobBase;
-            jobInstance.doTask(oncePerTileCheck);
+            if(jobInstance.isActiveAndEnabled)
+                jobInstance.doTask(oncePerTileCheck);
         }
     }
 

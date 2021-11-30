@@ -48,6 +48,8 @@ public class PeepMovement : JobBase
             }
             moving = false;
         }
+
+        Debug.DrawRay(transform.position + transform.right, transform.right, Color.green);
     }
 
     override public void doTask(bool oncePerTileCheck) //Once per tile check isnt needed here but we still *need* to accept it nontheless. I think...
@@ -94,7 +96,15 @@ public class PeepMovement : JobBase
                 avoidWall();
                 desiredLocation = transform.position + transform.right;
             }
-            moving = true;
+
+
+            //After having checked all the walls for free space we need to check if theres a peep already in the space we're trying to walk into
+            //For that we raycast and see if we hit the 2d collider of the other peep
+            //If so we just skip this "moving Cycle" and check again in however long moveFrequency takes.
+            if(!isForwardOccupied())
+            {
+                moving = true;
+            }
         }
     }
     
@@ -174,6 +184,13 @@ public class PeepMovement : JobBase
 
     }
 
+    public bool isForwardOccupied()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + transform.right, transform.right, 0.5f); //Magic number for length of Raycast. Also we need to move the raycast origin or else we hit our own collider D:
+        if(hit.collider != null)
+            return hit.collider.gameObject.CompareTag("Peep");
+        return false;
+    }
 
     //TODO: Look directions mit Enum machen damit man einfach per int und char auf direction zugreifen kann
     private char relativeDirection(string newDirection)
