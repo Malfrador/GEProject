@@ -46,3 +46,5 @@ MonoBehaviour:
   basicBackgroundTile: {fileID: 11400000, guid: 3efdb7d5b3a174f468f2da596749be85, type: 2}
   pickaxeTileSprite: {fileID: 21300000, guid: 85010bd4f54201d40be76d410f06e4b5, type: 3}
   pickaxeScript: Miner
+  goalTileSprite: {fileID: 21300000, guid: e4d3576994eaa3d469d8a68a912023d3, type: 3}
+  goalScript: PeepGoalReached

@@ -14,7 +14,7 @@ public class Peep : MonoBehaviour
     public bool oncePerTileCheck = false; //This is true a single time when a peep moves into a new tile and gets passed onto every doTask() of every job, gets set by PeepMovemet
     public Tilemap tileMap;
     public TileController tileController;
-
+    public GameCoordinator gameCoordinator;
 
     private void Start()
     {
