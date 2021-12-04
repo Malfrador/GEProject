@@ -21,6 +21,7 @@ public class TileController : MonoBehaviour
     public Sprite goalTileSprite; //The sprite of the goal tile
     public string goalScript; //The script that counts the peep as having won, deletes the peep and adds to the "winning peep counter"
 
+
     public int getNumberOfHits(int posX, int posY)
     {
         //We have to modify the posX and posY coordinates because as input we get negative coordinates but we only want positive ones in the array

@@ -15,6 +15,7 @@ public class Peep : MonoBehaviour
     public Tilemap tileMap;
     public TileController tileController;
     public GameCoordinator gameCoordinator;
+    public PeepController peepController;
 
     private void Start()
     {

@@ -59,12 +59,19 @@
     <Compile Include="Assets\Scripts\Peep\Jobs\PeepTileInteraction.cs" />
     <Compile Include="Assets\Scripts\Peep\Jobs\PeepMovement.cs" />
     <Compile Include="Assets\Scripts\Peep\Jobs\PeepGoalReached.cs" />
+    <Compile Include="Assets\Scripts\Peep\PeepController.cs" />
+    <Compile Include="Assets\Scripts\SceneController.cs" />
+    <Compile Include="Assets\Scripts\CustomUtil.cs" />
     <Compile Include="Assets\Scripts\Peep\Jobs\Miner.cs" />
     <Compile Include="Assets\Scripts\WallTile.cs" />
+    <Compile Include="Assets\Scripts\Peep\Jobs\Swimmer.cs" />
     <Compile Include="Assets\Scripts\TileController.cs" />
+    <Compile Include="Assets\Scripts\GamePauseListener.cs" />
+    <Compile Include="Assets\Scripts\DontDestroy.cs" />
     <Compile Include="Assets\Scripts\Peep\Jobs\JobBase.cs" />
     <Compile Include="Assets\Scripts\GameCoordinator.cs" />
     <Compile Include="Assets\Scripts\Peep\Peep.cs" />
+    <Compile Include="Assets\Scripts\TileRotationTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

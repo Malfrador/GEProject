@@ -19,6 +19,7 @@ public class PeepMovement : JobBase
 
     public Tilemap tileMap;
     public TileController tileController;
+    private PeepController peepController;
     private Peep mainPeepComponent;
 
     private void Start()
@@ -29,6 +30,7 @@ public class PeepMovement : JobBase
         mainPeepComponent = gameObject.GetComponent<Peep>();
         tileMap = mainPeepComponent.tileMap;
         tileController = mainPeepComponent.tileController;
+        peepController = mainPeepComponent.peepController;
     }
 
     private void Update()
@@ -40,11 +42,14 @@ public class PeepMovement : JobBase
         }
 
         //Can the == in Vector3 handle float inaccuracies?
+        //This activates every frame once we arrive at our desired location
         if (transform.position == desiredLocation)
         {
+            //This *should* only activate once when we first arrive at our desired location
             if (!mainPeepComponent.oncePerTileCheck && moving)
             {
                 oncePerTileCheckBuffer = true;
+                peepController.unregisterOldPosition(CustomUtil.Vector3ToInt(transform.position - transform.right + offsetCorrect));
             }
             moving = false;
         }
@@ -101,7 +106,7 @@ public class PeepMovement : JobBase
             //After having checked all the walls for free space we need to check if theres a peep already in the space we're trying to walk into
             //For that we raycast and see if we hit the 2d collider of the other peep
             //If so we just skip this "moving Cycle" and check again in however long moveFrequency takes.
-            if(!isForwardOccupied())
+            if(isForwardFree())
             {
                 moving = true;
             }
@@ -184,12 +189,14 @@ public class PeepMovement : JobBase
 
     }
 
-    public bool isForwardOccupied()
+    public bool isForwardFree()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position + transform.right, transform.right, 0.5f); //Magic number for length of Raycast. Also we need to move the raycast origin or else we hit our own collider D:
-        if(hit.collider != null)
-            return hit.collider.gameObject.CompareTag("Peep");
-        return false;
+        //RaycastHit2D hit = Physics2D.Raycast(transform.position + transform.right, transform.right, 0.5f); //Magic number for length of Raycast. Also we need to move the raycast origin or else we hit our own collider D:
+        //if(hit.collider != null)
+        //    return hit.collider.gameObject.CompareTag("Peep");
+        //return false;
+        //We only have to register our new postion at the peepController. There should be no raycasts needed
+        return peepController.registerPosition(CustomUtil.Vector3ToInt(transform.position + transform.right + offsetCorrect));
     }
 
     //TODO: Look directions mit Enum machen damit man einfach per int und char auf direction zugreifen kann
@@ -293,13 +300,9 @@ public class PeepMovement : JobBase
         return true;
     }
 
-    
 
-    //This isnt even used anymore anywhere. Im gonna leave it here tough for now
-    //private Vector3Int Vector3ToInt(Vector3 vector3)
-    //{
-    //    return new Vector3Int(Mathf.RoundToInt(vector3.x), Mathf.RoundToInt(vector3.y), Mathf.RoundToInt(vector3.z));
-    //}
+
+    
 
     //Not even sure why this is still here. It cant hurt to keep it tough i guess
     //private void move()
