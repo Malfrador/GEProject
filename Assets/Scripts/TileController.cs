@@ -18,6 +18,10 @@ public class TileController : MonoBehaviour
     public Sprite pickaxeTileSprite; //We use a bunch of public Sprites to set what sprite does what logic function. Then the individual jobs from peep can just access theses sprites
     public string pickaxeScript; //And the script associated with the pickaxeTile
 
+    public Sprite goalTileSprite; //The sprite of the goal tile
+    public string goalScript; //The script that counts the peep as having won, deletes the peep and adds to the "winning peep counter"
+
+
     public int getNumberOfHits(int posX, int posY)
     {
         //We have to modify the posX and posY coordinates because as input we get negative coordinates but we only want positive ones in the array
@@ -34,8 +38,11 @@ public class TileController : MonoBehaviour
     public bool matchingSprite(Sprite spriteToCompare)
     {
         //Ok. SURELY there has to be a better way
+        if (spriteToCompare == goalTileSprite)
+            return true;
         if (spriteToCompare == pickaxeTileSprite)
             return true;
+        
 
         return false;
     }
@@ -47,20 +54,12 @@ public class TileController : MonoBehaviour
         //Iterating trough Array has the same performance but is far less user friendly in the editor to assign new Script-Sprite combos because both are Arrays
         //At the very least make it so that the least used association is the last in the if list
         //Switch is not possible because it expects constants 
+        if (associatedSprite == goalTileSprite)
+            return goalScript;
         if (associatedSprite == pickaxeTileSprite)
             return pickaxeScript;
 
-        Debug.LogError("getComponent() called without matching sprite");
+        Debug.LogError("getScriptName() called without matching sprite");
         return null;
     }
-
-    public void pauseButtonClick() {
-        Time.timeScale = Time.timeScale == 1 ? 0 : 1;
-    }
-
-    public void ffButtonClick() {
-        Time.timeScale = Time.timeScale == 20 ? 1 : 20; 
-    }
-
-
 }

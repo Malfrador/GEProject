@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6334639323566427153}
   - component: {fileID: 6334639323566427154}
+  - component: {fileID: 6844784553613319621}
   m_Layer: 0
   m_Name: TileController
   m_TagString: Untagged
@@ -46,3 +47,17 @@ MonoBehaviour:
   basicBackgroundTile: {fileID: 11400000, guid: 3efdb7d5b3a174f468f2da596749be85, type: 2}
   pickaxeTileSprite: {fileID: 21300000, guid: 85010bd4f54201d40be76d410f06e4b5, type: 3}
   pickaxeScript: Miner
+  goalTileSprite: {fileID: 21300000, guid: e4d3576994eaa3d469d8a68a912023d3, type: 3}
+  goalScript: PeepGoalReached
+--- !u!114 &6844784553613319621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6334639323566427155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce8ed8f37357e7343a112781c72dbc89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
