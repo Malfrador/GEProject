@@ -16,6 +16,7 @@ public class PeepMovement : JobBase
     private bool oncePerTileCheckBuffer = false; //Needed because we can only know if the oncePerTileCheck is ok in our update function since thats where we move. But if the oncePerTile in the update theres possible desync with the FixedUpdate where all the job logic gets handled, so it gets buffered for the next call of doTask()
     public int moveFrequency = 40; //How high moveCounter has to be before the peep makes the next step => How long the peep waits inbetween steps
     public int moveSpeed = 1; //The time it takes for a peep to move from one tile to another
+    public bool blocked = false; //This is just for outside use. Nothing inside PeepMovement should change this. This is so that other jobs on the peep can block the movement
 
     public Tilemap tileMap;
     public TileController tileController;
@@ -79,6 +80,16 @@ public class PeepMovement : JobBase
             mainPeepComponent.oncePerTileCheck = true;
         }
             
+        //The oncePerTileCheck stuff still needs to be done even if the peep is blocked because a job in the first "check cycle" could block the movement and thus
+        //the other half of jobs maybe wouldnt get to execute their doTask()
+        //We also only have to check for blocked in toTask since if "moving" is true all the moving stuff gets done in update() 
+        //And thus other jobs just have to check if the peep is moving before or after blocking it
+        if (blocked)
+        {
+            return;
+        }    
+
+
 
         //We only add to the moveCoutner if the peep is standing still
         if (!moving)
@@ -300,6 +311,10 @@ public class PeepMovement : JobBase
         return true;
     }
 
+    public bool isMoving()
+    {
+        return moving;
+    }
 
 
     

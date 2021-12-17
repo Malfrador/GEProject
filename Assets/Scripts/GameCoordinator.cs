@@ -18,7 +18,7 @@ public class GameCoordinator : MonoBehaviour
     private TileController tileController;
     private PeepController peepController;
 
-    private float timeBetweenLastSpawn = 0;
+    private float timeBetweenLastSpawn = 9999; //Is setto high number so a peep instantly spawns when level starts
     private bool gameRunning = true;
     private Vector3 offsetCorrect = new Vector3(0.5f, 0.5f, 0.0f); //Used to correct for the fact that the spawnPoints are offset from grid (since the spawn needs to be in center of grid)
 

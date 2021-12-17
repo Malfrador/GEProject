@@ -21,6 +21,9 @@ public class TileController : MonoBehaviour
     public Sprite goalTileSprite; //The sprite of the goal tile
     public string goalScript; //The script that counts the peep as having won, deletes the peep and adds to the "winning peep counter"
 
+    public Sprite rotatingTileSprite; //The sprite thats below the rotating tile object
+    public string rotatingTileScript; //The script that manages interaction with the rotating tile object
+
 
     public int getNumberOfHits(int posX, int posY)
     {
@@ -42,7 +45,8 @@ public class TileController : MonoBehaviour
             return true;
         if (spriteToCompare == pickaxeTileSprite)
             return true;
-        
+        if (spriteToCompare == rotatingTileSprite)
+            return true;
 
         return false;
     }
@@ -58,6 +62,8 @@ public class TileController : MonoBehaviour
             return goalScript;
         if (associatedSprite == pickaxeTileSprite)
             return pickaxeScript;
+        if (associatedSprite == rotatingTileSprite)
+            return rotatingTileScript;
 
         Debug.LogError("getScriptName() called without matching sprite");
         return null;

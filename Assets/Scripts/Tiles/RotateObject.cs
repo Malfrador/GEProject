@@ -1,11 +1,13 @@
 using UnityEngine;
 
-public class RotateTile : MonoBehaviour
+public class RotateObject : MonoBehaviour
 {
     public Sprite[] sprites;
     public BoxCollider2D[] directionCollider;
+    public BoxCollider2D bigCollider;
     private int spritenumber = 0;
     public bool rotiert = false;
+    public bool blocked = false;
 
     public void ChangeShape(BoxCollider2D inputcollider)
     {
@@ -89,19 +91,42 @@ public class RotateTile : MonoBehaviour
     }
     public void animationcomplete()
     {
+        transform.rotation = Quaternion.Euler(0, 0,(float)Mathf.RoundToInt(transform.rotation.eulerAngles.z)); //We need to do this because apparently iTween doesnt like being clean
         rotiert = false;
+        bigCollider.enabled = true;
     }
     private void OnMouseOver()
     {
+        if (blocked)
+        {
+            return;
+        }
+
+
         if (Input.GetMouseButtonUp(0))
         {
-            rotiert = true;
+            initRotation();
             iTween.RotateAdd(gameObject, iTween.Hash("x",0,"y",0,"z",90,"time",0.5f,"oncomplete","animationcomplete"));
         }
         else if (Input.GetMouseButtonUp(1))
         {
-            rotiert = true;
+            initRotation();
             iTween.RotateAdd(gameObject, iTween.Hash("x", 0, "y", 0, "z", -90, "time", 0.5f, "oncomplete", "animationcomplete"));
         }
+    }
+
+    private void initRotation()
+    {
+        bigCollider.enabled = false;
+        rotiert = true;
+
+        //We need to tell all of our peeps that they have to block
+        //They unblock themselves
+        PeepRotatingTileInteract[] peepRotatingTileInteracts = gameObject.GetComponentsInChildren<PeepRotatingTileInteract>();
+        foreach(PeepRotatingTileInteract peepRotatingTileInteract in peepRotatingTileInteracts)
+        {
+            peepRotatingTileInteract.blocked = true;
+        }
+        
     }
 }
