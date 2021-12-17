@@ -62,14 +62,4 @@ public class TileController : MonoBehaviour
         Debug.LogError("getScriptName() called without matching sprite");
         return null;
     }
-
-    public void pauseButtonClick() {
-        Time.timeScale = Time.timeScale == 1 ? 0 : 1;
-    }
-
-    public void ffButtonClick() {
-        Time.timeScale = Time.timeScale == 20 ? 1 : 20; 
-    }
-
-
 }

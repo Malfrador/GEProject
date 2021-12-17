@@ -35,15 +35,6 @@ public class GameCoordinator : MonoBehaviour
     private void Update()
     {
 
-
-        //DEBUG THIS IS ONLY FOR TESTING THE PAUSING UNTIL A UI EXISTS
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            pauseEvent.Invoke();
-            gameRunning = !gameRunning;
-        }
-        //DEBUG END
-
         //DEBUG THIS IS FOR LOADING THE NEXT SCENE
         if(Input.GetKeyDown(KeyCode.L))
         {
@@ -149,5 +140,16 @@ public class GameCoordinator : MonoBehaviour
 
     }
 
-    
+    public void pauseButtonClick()
+    {
+        pauseEvent.Invoke();
+        gameRunning = !gameRunning;
+    }
+
+    public void ffButtonClick()
+    {
+        Time.timeScale = Time.timeScale == 20 ? 1 : 20;
+    }
+
+
 }
