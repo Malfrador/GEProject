@@ -12,15 +12,12 @@ public class PeepRotatingTileInteract : JobBase
 
     private void Start()
     {
+        //Check if we find a second RotatingTileInteract Script other than ourselves. This would mean that we have exited the rotating tile area and can delete ourselfes (and the other script)
         PeepRotatingTileInteract[] allRotatingScripts = gameObject.GetComponents<PeepRotatingTileInteract>();
         if (allRotatingScripts.Length > 1)
         {
             transform.parent = null;
-
-            foreach(PeepRotatingTileInteract currentPeepRoatingTileInteract in allRotatingScripts)
-            {
-                Destroy(currentPeepRoatingTileInteract); //Can we just destroy components without telling the gameobject? 
-            }
+            gameObject.GetComponent<Peep>().removeScripts("PeepRotatingTileInteract");
         }
 
 
@@ -49,7 +46,7 @@ public class PeepRotatingTileInteract : JobBase
         //    - The other script also makes sure the peep is no longer a child of the rotating tile object
 
         //Whats not done yet - we need to add a grace period after the rotation of the tile during which peepMovement is still blocked
-        
+
 
         //First step. Find the rotating Tile
         if(rotateObject == null)
@@ -84,6 +81,14 @@ public class PeepRotatingTileInteract : JobBase
         }
 
         //Fourth step and fifth. Wall check and possible mining
+        if(oncePerTileCheck)
+        {
+            RaycastHit2D hit2 = Physics2D.Raycast(transform.position, transform.right, 1f, LayerMask.GetMask("RotatingTileWalls"));
+            rotateObject.ChangeShape(hit2.collider as BoxCollider2D);
+        }
+
+
+
 
         //Sixth step. Walking into the tile and telling the tile to stop rotating
         peepMovement.blocked = false;
@@ -100,5 +105,20 @@ public class PeepRotatingTileInteract : JobBase
         transform.parent = rotateObject.transform;
 
 
+    }
+
+    public void updateLookDirection(string direction)
+    {
+        if(direction == "left")
+        {
+            gameObject.GetComponent<Peep>().lookDirection = peepMovement.relativeDirection("left");
+            return;
+        }
+        else if(direction == "right")
+        {
+            gameObject.GetComponent<Peep>().lookDirection = peepMovement.relativeDirection("right");
+            return;
+        }
+        Debug.LogError("Unknown look direction update in PeepRotatingTileInteract");
     }
 }

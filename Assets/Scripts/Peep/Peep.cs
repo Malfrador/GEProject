@@ -49,6 +49,19 @@ public class Peep : MonoBehaviour
         jobs.Add(newComponent);
     }
 
+    public void removeScripts(string scriptsToRemove)
+    {
+        for(int i = 0; i < jobs.Count; i++)
+        {
+            if(jobs[i].GetType() == Type.GetType(scriptsToRemove))
+            {
+                DestroyImmediate(jobs[i] as JobBase);
+                jobs.RemoveAt(i);
+                i--;
+            }
+        }
+    }
+
 
     
 }

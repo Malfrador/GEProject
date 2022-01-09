@@ -211,7 +211,7 @@ public class PeepMovement : JobBase
     }
 
     //TODO: Look directions mit Enum machen damit man einfach per int und char auf direction zugreifen kann
-    private char relativeDirection(string newDirection)
+    public char relativeDirection(string newDirection)
     {
         switch (mainPeepComponent.lookDirection)
         {
@@ -302,7 +302,6 @@ public class PeepMovement : JobBase
     //Would be tough if it would be some kind of Util-Class
     private bool isValidSpot(Vector3 positionToCheck, Tilemap tilemapForSprite)
     {
-
         if (tilemapForSprite.GetTile(tilemapForSprite.WorldToCell(positionToCheck)).GetType().ToString() == "WallTile")
         {
             return false;
