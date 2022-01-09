@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -80,12 +81,18 @@ public class PeepRotatingTileInteract : JobBase
             }
         }
 
+        //Function moved to rotatingWallDetect and PeepMovement
         //Fourth step and fifth. Wall check and possible mining
-        if(oncePerTileCheck)
-        {
-            RaycastHit2D hit2 = Physics2D.Raycast(transform.position, transform.right, 1f, LayerMask.GetMask("RotatingTileWalls"));
-            rotateObject.ChangeShape(hit2.collider as BoxCollider2D);
-        }
+        //if(oncePerTileCheck)
+        //{
+        //    RaycastHit2D hit2 = Physics2D.Raycast(transform.position, transform.right, 1f, LayerMask.GetMask("RotatingTileWalls"));
+
+        //    if (gameObject.GetComponent<Peep>().hasJob(Miner))
+        //    {
+
+        //    }
+        //    rotateObject.ChangeShape(hit2.collider as BoxCollider2D);
+        //}
 
 
 
@@ -120,5 +127,23 @@ public class PeepRotatingTileInteract : JobBase
             return;
         }
         Debug.LogError("Unknown look direction update in PeepRotatingTileInteract");
+    }
+
+    public bool rotatingTileWallDetected(Vector3 posToCheck)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(posToCheck, transform.right, 0.25f, LayerMask.GetMask("RotatingTileWalls"));
+        if (hit.collider == null)
+            return false;
+
+        //If we're a miner we might as well already mine it 
+        if(gameObject.GetComponent<Peep>().hasJob(Type.GetType("Miner")))
+        {
+            rotateObject.ChangeShape(hit.collider as BoxCollider2D);
+        }
+        else
+        {
+            return rotateObject.checkWalls(hit.collider as BoxCollider2D);
+        }
+        return false;
     }
 }

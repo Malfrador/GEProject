@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 307976258097284484}
   - component: {fileID: 5955627168925780810}
   - component: {fileID: 3427688547380884361}
+  - component: {fileID: 1627019833391869567}
   m_Layer: 0
   m_Name: ChildSpriteObject
   m_TagString: Untagged
@@ -110,6 +111,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3, y: 3}
   m_EdgeRadius: 0
+--- !u!114 &1627019833391869567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3113002252256670455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99993b40eeebd9b4aaae165ef9d4ca75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateObject: {fileID: 6855553188271230796}
 --- !u!1 &6855553188271230794
 GameObject:
   m_ObjectHideFlags: 0

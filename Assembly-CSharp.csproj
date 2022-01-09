@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,9 +53,6 @@
     <UnityVersion>2021.1.25f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Assets\Scripts\Peep\Jobs\PeepTileInteraction.cs" />
     <Compile Include="Assets\Scripts\Peep\Jobs\PeepMovement.cs" />
     <Compile Include="Assets\Scripts\Tiles\Tiles\RotateTile.cs" />
@@ -74,6 +71,7 @@
     <Compile Include="Assets\Scripts\Peep\Jobs\JobBase.cs" />
     <Compile Include="Assets\Scripts\GameCoordinator.cs" />
     <Compile Include="Assets\Scripts\Peep\Peep.cs" />
+    <Compile Include="Assets\Scripts\Tiles\RotateObjectChild.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

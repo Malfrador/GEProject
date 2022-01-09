@@ -62,6 +62,30 @@ public class Peep : MonoBehaviour
         }
     }
 
+    public bool hasJob(Type type)
+    {
+        for(int i = 0; i < jobs.Count; i++)
+        {
+            if(jobs[i].GetType() == type)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public JobBase getJob(Type type)
+    {
+        for (int i = 0; i < jobs.Count; i++)
+        {
+            if (jobs[i].GetType() == type)
+            {
+                return jobs[i] as JobBase; //Funktioniert as JobBase so?
+            }
+        }
+        return null;
+    }
+
 
     
 }

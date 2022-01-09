@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -305,6 +306,11 @@ public class PeepMovement : JobBase
         if (tilemapForSprite.GetTile(tilemapForSprite.WorldToCell(positionToCheck)).GetType().ToString() == "WallTile")
         {
             return false;
+        }
+        if(mainPeepComponent.hasJob(Type.GetType("PeepRotatingTileInteract"))) //If we detect that we have a PeepRotatingTileInteract that means we also have to check the walls of the rotating tile
+        {
+            PeepRotatingTileInteract peepRotatingTileInteract = mainPeepComponent.getJob(Type.GetType("PeepRotatingTileInteract")) as PeepRotatingTileInteract;
+            peepRotatingTileInteract.rotatingTileWallDetected(positionToCheck);
         }
 
         return true;
