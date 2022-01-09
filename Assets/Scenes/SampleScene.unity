@@ -747,7 +747,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   protoPeep: {fileID: 855962539253237894, guid: bab7713abb9583744919726d4fe45f37, type: 3}
-  timeBetweenPeepSpawns: 15
+  timeBetweenPeepSpawns: 30
   winningPeeps: 5
 --- !u!4 &1396312335
 Transform:
