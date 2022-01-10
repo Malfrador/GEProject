@@ -8,7 +8,6 @@ public class SceneController : MonoBehaviour
 
     public string[] scenes;
 
-
     public void loadNextScene()
     {
         if(scenes != null)
@@ -33,5 +32,20 @@ public class SceneController : MonoBehaviour
     public void loadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void loadEmptyScene()
+    {
+        SceneManager.LoadScene(scenes[scenes.Length - 1]);
+    }
+
+    public bool playableScene()
+    {
+        Scene activeScene = SceneManager.GetActiveScene();
+        if(activeScene.name == scenes[0] || activeScene.name == scenes[scenes.Length - 1])
+        {
+            return false;
+        }
+        return true;
     }
 }

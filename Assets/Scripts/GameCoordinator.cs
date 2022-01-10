@@ -9,6 +9,8 @@ public class GameCoordinator : MonoBehaviour
 
     public UnityEvent pauseEvent = new UnityEvent(); //This is the event that broadcasts to all "GamePauseListeners" that the game is paused
 
+    public Canvas menuCanvas;
+    public Canvas gameCanvas;
     public GameObject protoPeep;
     public float timeBetweenPeepSpawns = 2; //Time between spawns in seconds
     public int winningPeeps = 5;
@@ -73,6 +75,8 @@ public class GameCoordinator : MonoBehaviour
     public void OnLevelWasLoaded()
     {
         //At the start of a level we have to 
+        // - Disable or enable the UIs (Game or MainMenu UI)
+        // - Check if we're in a playable Scene - i.e not the MainMenu
         // - Find the spawnpoint where peeps are supposed to spawn from
         // - Remove the debug sprite from the spawnpoint thats used for easy leveldesign
         // - Find the TileMap
@@ -80,6 +84,16 @@ public class GameCoordinator : MonoBehaviour
         // - Find hte PeepController of the level
         // - Set the amount of peeps needed to win this level
 
+
+        gameCanvas.enabled = gameObject.GetComponent<SceneController>().playableScene();
+        menuCanvas.enabled = !gameObject.GetComponent<SceneController>().playableScene();
+
+        if (!gameObject.GetComponent<SceneController>().playableScene())
+        {
+            gameRunning = false;
+            return;
+        }
+        gameRunning = true;
         GameObject spawnPointObject = GameObject.Find("Spawnpoint");
         spawnPoint = spawnPointObject.transform;
         if(spawnPointObject.GetComponent<SpriteRenderer>())
@@ -151,5 +165,14 @@ public class GameCoordinator : MonoBehaviour
         Time.timeScale = Time.timeScale == 20 ? 1 : 20;
     }
 
+    public void backToMenu()
+    {
+        gameRunning = false;
+        gameObject.GetComponent<SceneController>().loadEmptyScene(); //We dont load back into main menu because then everything that stays over level loading would be duplicated
+    }
 
+    public void exitGame()
+    {
+        Application.Quit();
+    }
 }
