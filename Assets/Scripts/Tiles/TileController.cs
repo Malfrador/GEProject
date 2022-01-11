@@ -14,6 +14,7 @@ public class TileController : MonoBehaviour
     private int[,] hitData = new int[100, 100]; //Magic Number yey
 
     public Tile basicBackgroundTile; //This is for scripts to replace a tile if the powerup (for example the miner powerup) is exhausted and we want to replace the pickaxe tile with a normal background
+    public Sprite doorTileSprite;
 
     public Sprite pickaxeTileSprite; //We use a bunch of public Sprites to set what sprite does what logic function. Then the individual jobs from peep can just access theses sprites
     public string pickaxeScript; //And the script associated with the pickaxeTile
@@ -23,6 +24,9 @@ public class TileController : MonoBehaviour
 
     public Sprite rotatingTileSprite; //The sprite thats below the rotating tile object
     public string rotatingTileScript; //The script that manages interaction with the rotating tile object
+
+    public Sprite keyTileSprite; //The sprite of the Key pickup. Not the sprite of the Key-Door Tile
+    public string keyTileScript; //The script that manages interaction with the key, picks it up and unlocks the door
 
 
     public int getNumberOfHits(int posX, int posY)
@@ -47,6 +51,8 @@ public class TileController : MonoBehaviour
             return true;
         if (spriteToCompare == rotatingTileSprite)
             return true;
+        if (spriteToCompare == keyTileSprite)
+            return true;
 
         return false;
     }
@@ -64,6 +70,8 @@ public class TileController : MonoBehaviour
             return pickaxeScript;
         if (associatedSprite == rotatingTileSprite)
             return rotatingTileScript;
+        if (associatedSprite == keyTileSprite)
+            return keyTileScript;
 
         Debug.LogError("getScriptName() called without matching sprite");
         return null;
