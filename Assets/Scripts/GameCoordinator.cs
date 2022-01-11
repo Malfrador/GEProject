@@ -8,8 +8,10 @@ public class GameCoordinator : MonoBehaviour
 {
 
     public UnityEvent pauseEvent = new UnityEvent(); //This is the event that broadcasts to all "GamePauseListeners" that the game is paused
+    public UnityEvent trapMarkersClear = new UnityEvent(); //The event that triggers to clear all markers
 
     public GameObject protoPeep;
+    public GameObject trapMarker;
     public float timeBetweenPeepSpawns = 2; //Time between spawns in seconds
     public int winningPeeps = 5;
 
@@ -64,10 +66,38 @@ public class GameCoordinator : MonoBehaviour
 
     }
 
-    private void FixedUpdate()
+    
+    public void causeTrapClearing(Vector2[] trapLocations)
     {
-        
-        
+        //This is for when a vulcano causes a trap clearing
+        //To clear a single trap we need to:
+        // - Pause the game
+        // - Put translucent sprites over all traps with hitboxes
+        // - Give the trap markers a reference to ourself so they can activate clearTrap 
+        // - => New Method then does the actual clearing
+        // - => This method only initializes the "trap clearing sprites" i.e the little green boxes over the traps that can be cleared
+
+        //Pause the game
+        //TODO: Disable pause button otherwise we could re-run time
+        gameRunning = false;
+        pauseEvent.Invoke();
+
+        //Initialize all markers
+        foreach(Vector2 newTrapLoc in trapLocations)
+        {
+            GameObject newMarker = Instantiate(trapMarker, newTrapLoc, Quaternion.identity);
+            TrapMarker newTrapMarkerComp = newMarker.GetComponent<TrapMarker>();
+            newTrapMarkerComp.gameCoordinator = this;
+        }
+    }
+
+    public void clearTrap(Vector2 trapLocation)
+    {
+        trapMarkersClear.Invoke();
+        gameRunning = true;
+
+        //Clear the tile
+        tileMap.SetTile(tileMap.WorldToCell(trapLocation), tileController.basicBackgroundTile);
     }
 
     public void OnLevelWasLoaded()

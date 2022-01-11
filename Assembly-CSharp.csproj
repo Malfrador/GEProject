@@ -70,9 +70,12 @@
     <Compile Include="Assets\Scripts\DontDestroy.cs" />
     <Compile Include="Assets\Scripts\Tiles\RotateObject.cs" />
     <Compile Include="Assets\Scripts\Peep\Jobs\JobBase.cs" />
+    <Compile Include="Assets\Scripts\Peep\Jobs\Keyholder.cs" />
     <Compile Include="Assets\Scripts\GameCoordinator.cs" />
     <Compile Include="Assets\Scripts\Peep\Peep.cs" />
-    <Compile Include="Assets\Scripts\Peep\Jobs\Keyholder.cs" />
+    <Compile Include="Assets\Scripts\Tiles\Tiles\WaterTile.cs" />
+    <Compile Include="Assets\Scripts\TrapMarker.cs" />
+    <Compile Include="Assets\Scripts\Peep\Jobs\Sacrifice.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
