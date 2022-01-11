@@ -2495,6 +2495,7 @@ MonoBehaviour:
       m_Calls: []
   menuCanvas: {fileID: 441210732}
   gameCanvas: {fileID: 849147530}
+  blendCanvas: {fileID: 1652960633}
   protoPeep: {fileID: 855962539253237894, guid: bab7713abb9583744919726d4fe45f37, type: 3}
   timeBetweenPeepSpawns: 30
   winningPeeps: 5
