@@ -11,6 +11,7 @@ public class GameCoordinator : MonoBehaviour
 
     public Canvas menuCanvas;
     public Canvas gameCanvas;
+    public GameObject blendCanvas;
     public GameObject protoPeep;
     public float timeBetweenPeepSpawns = 2; //Time between spawns in seconds
     public int winningPeeps = 5;
@@ -27,6 +28,8 @@ public class GameCoordinator : MonoBehaviour
     private int numberOfPeepsSpawned = 0; //DEBUG REMOVE
     private void Start()
     {
+        DontDestroyOnLoad(menuCanvas); //Has to be done here because both canvases are not enabled when starting the game
+        DontDestroyOnLoad(gameCanvas);
 
 
         //DEBUG REMOVE 
@@ -66,11 +69,7 @@ public class GameCoordinator : MonoBehaviour
 
     }
 
-    private void FixedUpdate()
-    {
-        
-        
-    }
+    
 
     public void OnLevelWasLoaded()
     {
@@ -84,9 +83,11 @@ public class GameCoordinator : MonoBehaviour
         // - Find hte PeepController of the level
         // - Set the amount of peeps needed to win this level
 
-
+        blendCanvas.GetComponent<Animator>().Play("BlendOutAnimation");
         gameCanvas.enabled = gameObject.GetComponent<SceneController>().playableScene();
-        menuCanvas.enabled = !gameObject.GetComponent<SceneController>().playableScene();
+        menuCanvas.gameObject.SetActive(false); //Menu Canvas always and only gets enabled by the animator of the main menu background
+
+        
 
         if (!gameObject.GetComponent<SceneController>().playableScene())
         {

@@ -66,8 +66,10 @@
     <Compile Include="Assets\Scripts\Peep\Jobs\Miner.cs" />
     <Compile Include="Assets\Scripts\Tiles\Tiles\WallTile.cs" />
     <Compile Include="Assets\Scripts\Peep\Jobs\Swimmer.cs" />
+    <Compile Include="Assets\Scripts\AnimLoadLevel.cs" />
     <Compile Include="Assets\Scripts\Tiles\TileController.cs" />
     <Compile Include="Assets\Scripts\Peep\Jobs\PeepRotatingTileInteract.cs" />
+    <Compile Include="Assets\Scripts\CustomDynamicEvents.cs" />
     <Compile Include="Assets\Scripts\GamePauseListener.cs" />
     <Compile Include="Assets\Scripts\Tiles\RotateObjectChild.cs" />
     <Compile Include="Assets\Scripts\EventReroute.cs" />

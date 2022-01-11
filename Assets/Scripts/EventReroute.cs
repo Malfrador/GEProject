@@ -8,7 +8,6 @@ public class EventReroute : MonoBehaviour
 
     public void reroute()
     {
-        Debug.Log("Hello");
         myEvent.Invoke();
     }
 }

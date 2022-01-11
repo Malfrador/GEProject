@@ -8,6 +8,12 @@ public class SceneController : MonoBehaviour
 
     public string[] scenes;
 
+
+    private void Start()
+    {
+        SceneManager.LoadScene("MainMenu"); //The SceneController only starts in the setup scene so we can just start it right away
+    }
+
     public void loadNextScene()
     {
         if(scenes != null)
@@ -42,7 +48,7 @@ public class SceneController : MonoBehaviour
     public bool playableScene()
     {
         Scene activeScene = SceneManager.GetActiveScene();
-        if(activeScene.name == scenes[0] || activeScene.name == scenes[scenes.Length - 1])
+        if(activeScene.name == "MainMenu" || activeScene.name == "Setup" || activeScene.name == scenes[scenes.Length - 1]) //Last Scene in List is EmptyScene
         {
             return false;
         }
