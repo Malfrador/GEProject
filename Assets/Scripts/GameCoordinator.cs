@@ -8,11 +8,10 @@ public class GameCoordinator : MonoBehaviour
 {
 
     public UnityEvent pauseEvent = new UnityEvent(); //This is the event that broadcasts to all "GamePauseListeners" that the game is paused
+    public UnityEvent trapMarkersClear = new UnityEvent(); //The event that triggers to clear all markers
 
-    public Canvas menuCanvas;
-    public Canvas gameCanvas;
-    public GameObject blendCanvas;
     public GameObject protoPeep;
+    public GameObject trapMarker;
     public float timeBetweenPeepSpawns = 2; //Time between spawns in seconds
     public int winningPeeps = 5;
 
@@ -28,8 +27,6 @@ public class GameCoordinator : MonoBehaviour
     private int numberOfPeepsSpawned = 0; //DEBUG REMOVE
     private void Start()
     {
-        DontDestroyOnLoad(menuCanvas); //Has to be done here because both canvases are not enabled when starting the game
-        DontDestroyOnLoad(gameCanvas);
 
 
         //DEBUG REMOVE 
@@ -70,12 +67,42 @@ public class GameCoordinator : MonoBehaviour
     }
 
     
+    public void causeTrapClearing(Vector2[] trapLocations)
+    {
+        //This is for when a vulcano causes a trap clearing
+        //To clear a single trap we need to:
+        // - Pause the game
+        // - Put translucent sprites over all traps with hitboxes
+        // - Give the trap markers a reference to ourself so they can activate clearTrap 
+        // - => New Method then does the actual clearing
+        // - => This method only initializes the "trap clearing sprites" i.e the little green boxes over the traps that can be cleared
+
+        //Pause the game
+        //TODO: Disable pause button otherwise we could re-run time
+        gameRunning = false;
+        pauseEvent.Invoke();
+
+        //Initialize all markers
+        foreach(Vector2 newTrapLoc in trapLocations)
+        {
+            GameObject newMarker = Instantiate(trapMarker, newTrapLoc, Quaternion.identity);
+            TrapMarker newTrapMarkerComp = newMarker.GetComponent<TrapMarker>();
+            newTrapMarkerComp.gameCoordinator = this;
+        }
+    }
+
+    public void clearTrap(Vector2 trapLocation)
+    {
+        trapMarkersClear.Invoke();
+        gameRunning = true;
+
+        //Clear the tile
+        tileMap.SetTile(tileMap.WorldToCell(trapLocation), tileController.basicBackgroundTile);
+    }
 
     public void OnLevelWasLoaded()
     {
         //At the start of a level we have to 
-        // - Disable or enable the UIs (Game or MainMenu UI)
-        // - Check if we're in a playable Scene - i.e not the MainMenu
         // - Find the spawnpoint where peeps are supposed to spawn from
         // - Remove the debug sprite from the spawnpoint thats used for easy leveldesign
         // - Find the TileMap
@@ -83,18 +110,6 @@ public class GameCoordinator : MonoBehaviour
         // - Find hte PeepController of the level
         // - Set the amount of peeps needed to win this level
 
-        blendCanvas.GetComponent<Animator>().Play("BlendOutAnimation");
-        gameCanvas.enabled = gameObject.GetComponent<SceneController>().playableScene();
-        menuCanvas.gameObject.SetActive(false); //Menu Canvas always and only gets enabled by the animator of the main menu background
-
-        
-
-        if (!gameObject.GetComponent<SceneController>().playableScene())
-        {
-            gameRunning = false;
-            return;
-        }
-        gameRunning = true;
         GameObject spawnPointObject = GameObject.Find("Spawnpoint");
         spawnPoint = spawnPointObject.transform;
         if(spawnPointObject.GetComponent<SpriteRenderer>())
@@ -166,14 +181,5 @@ public class GameCoordinator : MonoBehaviour
         Time.timeScale = Time.timeScale == 20 ? 1 : 20;
     }
 
-    public void backToMenu()
-    {
-        gameRunning = false;
-        gameObject.GetComponent<SceneController>().loadEmptyScene(); //We dont load back into main menu because then everything that stays over level loading would be duplicated
-    }
 
-    public void exitGame()
-    {
-        Application.Quit();
-    }
 }

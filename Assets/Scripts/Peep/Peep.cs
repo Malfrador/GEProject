@@ -86,6 +86,11 @@ public class Peep : MonoBehaviour
         return null;
     }
 
-
+    public void die()
+    {
+        //The only thing i could think of is that we have to tell the peepController to unregister our current position
+        peepController.unregisterOldPosition(CustomUtil.Vector3ToInt(transform.position));
+        Destroy(gameObject);
+    }
     
 }

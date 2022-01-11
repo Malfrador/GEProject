@@ -5,6 +5,13 @@ using UnityEngine.Tilemaps;
 
 public class TileController : MonoBehaviour
 {
+    private struct vulcano
+    {
+        public Vector2 pos;
+        public int peepsSacrificed;
+    }
+
+
     //This is used to track how often a peep hits a certain tile
     //The top list is the 'x' component of the tile position
     //The second dimension is the 'y' position
@@ -12,8 +19,14 @@ public class TileController : MonoBehaviour
     //So you might have an Array with an entry at '2' and then the next one at '5' with 3 free spaces inbetween
     //But at the moment i dont know another way to centrally control the peep tile hits
     private int[,] hitData = new int[100, 100]; //Magic Number yey
+    private ArrayList vulcanos = new ArrayList();
+    private GameCoordinator gameCoordinator;
 
     public Tile basicBackgroundTile; //This is for scripts to replace a tile if the powerup (for example the miner powerup) is exhausted and we want to replace the pickaxe tile with a normal background
+    public Sprite doorTileSprite;
+
+    public Vector2[] vulcanoTraps; //These are the positions of the traps that x amount of peeps sacrificed in a vulcano can unlock
+    public int vulcanoSacrificesNeeded;
 
     public Sprite pickaxeTileSprite; //We use a bunch of public Sprites to set what sprite does what logic function. Then the individual jobs from peep can just access theses sprites
     public string pickaxeScript; //And the script associated with the pickaxeTile
@@ -24,6 +37,16 @@ public class TileController : MonoBehaviour
     public Sprite rotatingTileSprite; //The sprite thats below the rotating tile object
     public string rotatingTileScript; //The script that manages interaction with the rotating tile object
 
+    public Sprite keyTileSprite; //The sprite of the Key pickup. Not the sprite of the Key-Door Tile
+    public string keyTileScript; //The script that manages interaction with the key, picks it up and unlocks the door
+
+    public Sprite vulcanoSprite; //The sprite of any vulcano that peeps walk into. Each vulcano has its own counter but otherwise they have the same sprite
+    public string vulcanoScript; //The script that manages the interaction with the vulcano (i.e dies)
+
+    private void Start()
+    {
+        gameCoordinator = GameObject.FindObjectOfType<GameCoordinator>();
+    }
 
     public int getNumberOfHits(int posX, int posY)
     {
@@ -47,6 +70,10 @@ public class TileController : MonoBehaviour
             return true;
         if (spriteToCompare == rotatingTileSprite)
             return true;
+        if (spriteToCompare == keyTileSprite)
+            return true;
+        if (spriteToCompare == vulcanoSprite)
+            return true;
 
         return false;
     }
@@ -64,8 +91,40 @@ public class TileController : MonoBehaviour
             return pickaxeScript;
         if (associatedSprite == rotatingTileSprite)
             return rotatingTileScript;
+        if (associatedSprite == keyTileSprite)
+            return keyTileScript;
+        if (associatedSprite == vulcanoSprite)
+            return vulcanoScript;
 
         Debug.LogError("getScriptName() called without matching sprite");
         return null;
+    }
+
+    public void sacrificePeep(Vector2 vulcanoPosition)
+    {
+        //Check if we already have a vulcano registered if not register one
+        if(vulcanos.Count <= 0)
+        {
+            vulcano newVulcano = new vulcano();
+            newVulcano.pos = vulcanoPosition;
+            newVulcano.peepsSacrificed = 0;
+            vulcanos.Add(newVulcano);
+        }
+
+        //Search trough all vulcanos to check if we have one
+        for(int i = 0; i < vulcanos.Count; i++)
+        {
+            vulcano newTempVulcano = (vulcano)vulcanos[i];
+            if(newTempVulcano.pos == vulcanoPosition)
+            {
+                //Add to the sacrifice count and check if we have a enough to cause a "trap clearing"
+                newTempVulcano.peepsSacrificed++;
+                if(newTempVulcano.peepsSacrificed >= vulcanoSacrificesNeeded)
+                {
+                    newTempVulcano.peepsSacrificed = 0;
+                    gameCoordinator.causeTrapClearing(vulcanoTraps);
+                }
+            }
+        }
     }
 }
