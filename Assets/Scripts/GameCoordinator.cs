@@ -129,13 +129,27 @@ public class GameCoordinator : MonoBehaviour
         if (!gameObject.GetComponent<SceneController>().playableScene())
         {
             gameRunning = false;
-            mainCamera.size = 5;
-
+            mainCamera.orthographicSize = 5;
+            mainCamera.transform.position = new Vector3(0, 0, -10);
             return;
         }
         else
         {
             //Find ReferenceCamera and set position and size accordingly
+            Camera referenceCam = null;
+            Camera[] cameras = Resources.FindObjectsOfTypeAll<Camera>(); //Also searches for/in inactive gameobjects
+            foreach(Camera cam in cameras)
+            {
+                if(cam.gameObject.name == "ReferenceCamera")
+                {
+                    referenceCam = cam;
+                }
+            }
+            if(referenceCam != null)
+            {
+                mainCamera.transform.position = new Vector3(referenceCam.transform.position.x, referenceCam.transform.position.y, -10);
+                mainCamera.orthographicSize = referenceCam.orthographicSize;
+            }
         }
         gameRunning = true;
         GameObject spawnPointObject = GameObject.Find("Spawnpoint");
