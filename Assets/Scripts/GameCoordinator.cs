@@ -176,12 +176,13 @@ public class GameCoordinator : MonoBehaviour
 
         //I think this is not necessary
         // - Activate the new Peep (the components of the peep expect the tilemap and tilecontroller to be assigned at Start() so the prefab is deactivated
-        if (!peepController.registerPosition(CustomUtil.Vector3ToInt(spawnPoint.position + offsetCorrect)))
+        if (!peepController.isFreePosition(CustomUtil.Vector3ToInt(spawnPoint.position + offsetCorrect)))
         {
             Debug.LogWarning("Game Controller tried to spawn in occupied position");
             return;
         }
         GameObject newPeep = Instantiate(protoPeep);
+        peepController.registerPosition(CustomUtil.Vector3ToInt(spawnPoint.position + offsetCorrect), newPeep.GetComponent<Peep>());
         newPeep.GetComponent<Peep>().tileMap = tileMap;
         newPeep.GetComponent<Peep>().tileController = tileController;
         newPeep.GetComponent<Peep>().gameCoordinator = this;
@@ -191,7 +192,7 @@ public class GameCoordinator : MonoBehaviour
         newPeep.transform.position = spawnPoint.position;
 
         newPeep.name = newPeep.name + numberOfPeepsSpawned.ToString(); //DEBUG REMOVE
-        numberOfPeepsSpawned++;
+        numberOfPeepsSpawned++;        
     }
 
     public void peepGoalReached()
