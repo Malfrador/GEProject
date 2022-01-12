@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Mini Level 1.unity
     guid: 78af00f3ccc4f694fa3b1eec0a98949a
   - enabled: 1
+    path: Assets/Scenes/Mini Level 2.unity
+    guid: 25e8d1449b8857943ba5b8873ced815d
+  - enabled: 1
     path: Assets/Scenes/Func/EmptyScene.unity
     guid: 64b1c6c611f60dc4887ad0f170a24f22
   m_configObjects: {}
