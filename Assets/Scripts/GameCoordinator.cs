@@ -186,6 +186,7 @@ public class GameCoordinator : MonoBehaviour
         newPeep.GetComponent<Peep>().tileController = tileController;
         newPeep.GetComponent<Peep>().gameCoordinator = this;
         newPeep.GetComponent<Peep>().peepController = peepController;
+        newPeep.GetComponent<Peep>().lookDirection = CustomUtil.angleToLookDir(Mathf.RoundToInt(spawnPoint.rotation.eulerAngles.z) + 90);
         newPeep.transform.rotation = Quaternion.Euler(0, 0, spawnPoint.rotation.eulerAngles.z + 90.0f);
         newPeep.transform.position = spawnPoint.position;
 
