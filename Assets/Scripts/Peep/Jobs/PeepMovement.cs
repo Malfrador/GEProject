@@ -122,6 +122,19 @@ public class PeepMovement : JobBase
             {
                 moving = true;
             }
+            else
+            {
+                //Check if the peep thats infront of us looks in the same direction
+                //If it doesnt then we can simply turn around
+                Peep otherPeep = peepController.GetPeep(CustomUtil.Vector3ToInt(transform.position + transform.right));
+                if(otherPeep != null) //NO Idea why peeps sometimes thing that Forward isnt free and check in empty spots but i dont have time right now to test
+                {
+                    if (otherPeep.lookDirection == mainPeepComponent.lookDirection)
+                    {
+                        changeDirection(relativeDirection("back"));
+                    }
+                }
+            }
         }
     }
     
@@ -208,7 +221,7 @@ public class PeepMovement : JobBase
         //    return hit.collider.gameObject.CompareTag("Peep");
         //return false;
         //We only have to register our new postion at the peepController. There should be no raycasts needed
-        return peepController.registerPosition(CustomUtil.Vector3ToInt(transform.position + transform.right + offsetCorrect));
+        return peepController.registerPosition(CustomUtil.Vector3ToInt(transform.position + transform.right + offsetCorrect), mainPeepComponent);
     }
 
     //TODO: Look directions mit Enum machen damit man einfach per int und char auf direction zugreifen kann
