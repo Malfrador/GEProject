@@ -23,4 +23,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Func/EmptyScene.unity
     guid: 64b1c6c611f60dc4887ad0f170a24f22
+  - enabled: 1
+    path: Assets/Scenes/Mini Level 2.unity
+    guid: 25e8d1449b8857943ba5b8873ced815d
+  - enabled: 1
+    path: Assets/Scenes/Testing.unity
+    guid: ed6afdc8464920f49aaeaaa82c0e39ce
+  - enabled: 1
+    path: Assets/Scenes/Testing0.unity
+    guid: 064646560b76488409ddb44c60b98bed
   m_configObjects: {}
