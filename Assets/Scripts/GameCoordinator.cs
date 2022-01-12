@@ -10,6 +10,10 @@ public class GameCoordinator : MonoBehaviour
     public UnityEvent pauseEvent = new UnityEvent(); //This is the event that broadcasts to all "GamePauseListeners" that the game is paused
     public UnityEvent trapMarkersClear = new UnityEvent(); //The event that triggers to clear all markers
 
+    public Camera mainCamera;
+    public Canvas menuCanvas;
+    public Canvas gameCanvas;
+    public GameObject blendCanvas;
     public GameObject protoPeep;
     public GameObject trapMarker;
     public float timeBetweenPeepSpawns = 2; //Time between spawns in seconds
@@ -27,6 +31,8 @@ public class GameCoordinator : MonoBehaviour
     private int numberOfPeepsSpawned = 0; //DEBUG REMOVE
     private void Start()
     {
+        DontDestroyOnLoad(menuCanvas); //Has to be done here because both canvases are not enabled when starting the game
+        DontDestroyOnLoad(gameCanvas);
 
 
         //DEBUG REMOVE 
@@ -38,7 +44,7 @@ public class GameCoordinator : MonoBehaviour
     {
 
         //DEBUG THIS IS FOR LOADING THE NEXT SCENE
-        if(Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.L))
         {
             levelWon();
         }
@@ -49,7 +55,7 @@ public class GameCoordinator : MonoBehaviour
         //During our level runing we have to 
         // - Spawn peeps at specific intervals
         // - Only do all of this if the game is not paused
-        if(gameRunning)
+        if (gameRunning)
         {
             timeBetweenLastSpawn += Time.deltaTime;
             if (timeBetweenLastSpawn >= timeBetweenPeepSpawns)
@@ -59,14 +65,14 @@ public class GameCoordinator : MonoBehaviour
                 timeBetweenLastSpawn = 0;
             }
         }
-        
 
 
-        
+
+
 
     }
 
-    
+
     public void causeTrapClearing(Vector2[] trapLocations)
     {
         //This is for when a vulcano causes a trap clearing
@@ -103,6 +109,10 @@ public class GameCoordinator : MonoBehaviour
     public void OnLevelWasLoaded()
     {
         //At the start of a level we have to 
+        // - Disable or enable the UIs (Game or MainMenu UI)
+        // - Check if we're in a playable Scene - i.e not the MainMenu
+        // - Set the camera accordingly - if we are in a playable scene search for the "ReferenceCamera" and copy position and size from that to our camera
+        // - If we're not in a playable scene set camera position to 0,0 and size to 5
         // - Find the spawnpoint where peeps are supposed to spawn from
         // - Remove the debug sprite from the spawnpoint thats used for easy leveldesign
         // - Find the TileMap
@@ -110,9 +120,27 @@ public class GameCoordinator : MonoBehaviour
         // - Find hte PeepController of the level
         // - Set the amount of peeps needed to win this level
 
+        blendCanvas.GetComponent<Animator>().Play("BlendOutAnimation");
+        gameCanvas.enabled = gameObject.GetComponent<SceneController>().playableScene();
+        menuCanvas.gameObject.SetActive(false); //Menu Canvas always and only gets enabled by the animator of the main menu background
+
+
+
+        if (!gameObject.GetComponent<SceneController>().playableScene())
+        {
+            gameRunning = false;
+            mainCamera.size = 5;
+
+            return;
+        }
+        else
+        {
+            //Find ReferenceCamera and set position and size accordingly
+        }
+        gameRunning = true;
         GameObject spawnPointObject = GameObject.Find("Spawnpoint");
         spawnPoint = spawnPointObject.transform;
-        if(spawnPointObject.GetComponent<SpriteRenderer>())
+        if (spawnPointObject.GetComponent<SpriteRenderer>())
             spawnPointObject.GetComponent<SpriteRenderer>().enabled = false;
         tileMap = GameObject.FindObjectOfType<Tilemap>();
         tileController = GameObject.FindObjectOfType<TileController>();

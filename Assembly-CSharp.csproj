@@ -61,13 +61,16 @@
     <Compile Include="Assets\Scripts\Tiles\Tiles\RotateTile.cs" />
     <Compile Include="Assets\Scripts\Peep\Jobs\PeepGoalReached.cs" />
     <Compile Include="Assets\Scripts\Peep\PeepController.cs" />
+    <Compile Include="Assets\Scripts\Tiles\Tiles\WaterTile.cs" />
     <Compile Include="Assets\Scripts\SceneController.cs" />
     <Compile Include="Assets\Scripts\CustomUtil.cs" />
     <Compile Include="Assets\Scripts\Peep\Jobs\Miner.cs" />
     <Compile Include="Assets\Scripts\Tiles\Tiles\WallTile.cs" />
     <Compile Include="Assets\Scripts\Peep\Jobs\Swimmer.cs" />
     <Compile Include="Assets\Scripts\AnimLoadLevel.cs" />
+    <Compile Include="Assets\Scripts\TrapMarker.cs" />
     <Compile Include="Assets\Scripts\Tiles\TileController.cs" />
+    <Compile Include="Assets\Scripts\Peep\Jobs\Sacrifice.cs" />
     <Compile Include="Assets\Scripts\Peep\Jobs\PeepRotatingTileInteract.cs" />
     <Compile Include="Assets\Scripts\CustomDynamicEvents.cs" />
     <Compile Include="Assets\Scripts\GamePauseListener.cs" />
@@ -76,6 +79,7 @@
     <Compile Include="Assets\Scripts\DontDestroy.cs" />
     <Compile Include="Assets\Scripts\Tiles\RotateObject.cs" />
     <Compile Include="Assets\Scripts\Peep\Jobs\JobBase.cs" />
+    <Compile Include="Assets\Scripts\Peep\Jobs\Keyholder.cs" />
     <Compile Include="Assets\Scripts\GameCoordinator.cs" />
     <Compile Include="Assets\Scripts\Peep\Peep.cs" />
   </ItemGroup>
