@@ -54,7 +54,6 @@ public class PeepController : MonoBehaviour
             }
         }
 
-        Debug.LogWarning("GetPeep called without a Peep Found");
         return null;
     }
 

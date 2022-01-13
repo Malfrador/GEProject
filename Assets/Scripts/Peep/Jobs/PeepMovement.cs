@@ -323,7 +323,7 @@ public class PeepMovement : JobBase
         if(mainPeepComponent.hasJob(Type.GetType("PeepRotatingTileInteract"))) //If we detect that we have a PeepRotatingTileInteract that means we also have to check the walls of the rotating tile
         {
             PeepRotatingTileInteract peepRotatingTileInteract = mainPeepComponent.getJob(Type.GetType("PeepRotatingTileInteract")) as PeepRotatingTileInteract;
-            peepRotatingTileInteract.rotatingTileWallDetected(positionToCheck);
+            return !peepRotatingTileInteract.rotatingTileWallDetected(positionToCheck);
         }
 
         return true;

@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Mini Level 2.unity
     guid: 25e8d1449b8857943ba5b8873ced815d
   - enabled: 1
+    path: Assets/Scenes/Testing.unity
+    guid: cb0e4990578645e408e83fd38a2c6fd1
+  - enabled: 1
     path: Assets/Scenes/Func/EmptyScene.unity
     guid: 64b1c6c611f60dc4887ad0f170a24f22
   - enabled: 1
