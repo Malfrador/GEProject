@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aee8236a3796d3840b35175c06ffe478, type: 3}
-  m_Name: Full-TPieceBottom
+  m_Name: Full-TPiece Bottom
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 4576470032701149410, guid: 412adced70c46f847bf37217172b64d6, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
