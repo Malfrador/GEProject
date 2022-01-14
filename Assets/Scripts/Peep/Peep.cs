@@ -14,7 +14,8 @@ public class Peep : MonoBehaviour
     public bool oncePerTileCheck = false; //This is true a single time when a peep moves into a new tile and gets passed onto every doTask() of every job, gets set by PeepMovemet
     public Tilemap tileMap;
     public TileController tileController;
-
+    public GameCoordinator gameCoordinator;
+    public PeepController peepController;
 
     private void Start()
     {
@@ -48,6 +49,48 @@ public class Peep : MonoBehaviour
         jobs.Add(newComponent);
     }
 
+    public void removeScripts(string scriptsToRemove)
+    {
+        for(int i = 0; i < jobs.Count; i++)
+        {
+            if(jobs[i].GetType() == Type.GetType(scriptsToRemove))
+            {
+                DestroyImmediate(jobs[i] as JobBase);
+                jobs.RemoveAt(i);
+                i--;
+            }
+        }
+    }
 
+    public bool hasJob(Type type)
+    {
+        for(int i = 0; i < jobs.Count; i++)
+        {
+            if(jobs[i].GetType() == type)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public JobBase getJob(Type type)
+    {
+        for (int i = 0; i < jobs.Count; i++)
+        {
+            if (jobs[i].GetType() == type)
+            {
+                return jobs[i] as JobBase; //Funktioniert as JobBase so?
+            }
+        }
+        return null;
+    }
+
+    public void die()
+    {
+        //The only thing i could think of is that we have to tell the peepController to unregister our current position
+        peepController.unregisterOldPosition(CustomUtil.Vector3ToInt(transform.position));
+        Destroy(gameObject);
+    }
     
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -16,9 +17,11 @@ public class PeepMovement : JobBase
     private bool oncePerTileCheckBuffer = false; //Needed because we can only know if the oncePerTileCheck is ok in our update function since thats where we move. But if the oncePerTile in the update theres possible desync with the FixedUpdate where all the job logic gets handled, so it gets buffered for the next call of doTask()
     public int moveFrequency = 40; //How high moveCounter has to be before the peep makes the next step => How long the peep waits inbetween steps
     public int moveSpeed = 1; //The time it takes for a peep to move from one tile to another
+    public bool blocked = false; //This is just for outside use. Nothing inside PeepMovement should change this. This is so that other jobs on the peep can block the movement
 
     public Tilemap tileMap;
     public TileController tileController;
+    private PeepController peepController;
     private Peep mainPeepComponent;
 
     private void Start()
@@ -29,6 +32,7 @@ public class PeepMovement : JobBase
         mainPeepComponent = gameObject.GetComponent<Peep>();
         tileMap = mainPeepComponent.tileMap;
         tileController = mainPeepComponent.tileController;
+        peepController = mainPeepComponent.peepController;
     }
 
     private void Update()
@@ -40,11 +44,14 @@ public class PeepMovement : JobBase
         }
 
         //Can the == in Vector3 handle float inaccuracies?
+        //This activates every frame once we arrive at our desired location
         if (transform.position == desiredLocation)
         {
+            //This *should* only activate once when we first arrive at our desired location
             if (!mainPeepComponent.oncePerTileCheck && moving)
             {
                 oncePerTileCheckBuffer = true;
+                peepController.unregisterOldPosition(CustomUtil.Vector3ToInt(transform.position - transform.right + offsetCorrect));
             }
             moving = false;
         }
@@ -74,6 +81,16 @@ public class PeepMovement : JobBase
             mainPeepComponent.oncePerTileCheck = true;
         }
             
+        //The oncePerTileCheck stuff still needs to be done even if the peep is blocked because a job in the first "check cycle" could block the movement and thus
+        //the other half of jobs maybe wouldnt get to execute their doTask()
+        //We also only have to check for blocked in toTask since if "moving" is true all the moving stuff gets done in update() 
+        //And thus other jobs just have to check if the peep is moving before or after blocking it
+        if (blocked)
+        {
+            return;
+        }    
+
+
 
         //We only add to the moveCoutner if the peep is standing still
         if (!moving)
@@ -101,9 +118,22 @@ public class PeepMovement : JobBase
             //After having checked all the walls for free space we need to check if theres a peep already in the space we're trying to walk into
             //For that we raycast and see if we hit the 2d collider of the other peep
             //If so we just skip this "moving Cycle" and check again in however long moveFrequency takes.
-            if(!isForwardOccupied())
+            if(isForwardFree())
             {
                 moving = true;
+            }
+            else
+            {
+                //Check if the peep thats infront of us looks in the same direction
+                //If it doesnt then we can simply turn around
+                Peep otherPeep = peepController.GetPeep(CustomUtil.Vector3ToInt(transform.position + transform.right));
+                if(otherPeep != null) //NO Idea why peeps sometimes thing that Forward isnt free and check in empty spots but i dont have time right now to test
+                {
+                    if (otherPeep.lookDirection == mainPeepComponent.lookDirection)
+                    {
+                        changeDirection(relativeDirection("back"));
+                    }
+                }
             }
         }
     }
@@ -184,16 +214,18 @@ public class PeepMovement : JobBase
 
     }
 
-    public bool isForwardOccupied()
+    public bool isForwardFree()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position + transform.right, transform.right, 0.5f); //Magic number for length of Raycast. Also we need to move the raycast origin or else we hit our own collider D:
-        if(hit.collider != null)
-            return hit.collider.gameObject.CompareTag("Peep");
-        return false;
+        //RaycastHit2D hit = Physics2D.Raycast(transform.position + transform.right, transform.right, 0.5f); //Magic number for length of Raycast. Also we need to move the raycast origin or else we hit our own collider D:
+        //if(hit.collider != null)
+        //    return hit.collider.gameObject.CompareTag("Peep");
+        //return false;
+        //We only have to register our new postion at the peepController. There should be no raycasts needed
+        return peepController.registerPosition(CustomUtil.Vector3ToInt(transform.position + transform.right + offsetCorrect), mainPeepComponent);
     }
 
     //TODO: Look directions mit Enum machen damit man einfach per int und char auf direction zugreifen kann
-    private char relativeDirection(string newDirection)
+    public char relativeDirection(string newDirection)
     {
         switch (mainPeepComponent.lookDirection)
         {
@@ -284,22 +316,26 @@ public class PeepMovement : JobBase
     //Would be tough if it would be some kind of Util-Class
     private bool isValidSpot(Vector3 positionToCheck, Tilemap tilemapForSprite)
     {
-
         if (tilemapForSprite.GetTile(tilemapForSprite.WorldToCell(positionToCheck)).GetType().ToString() == "WallTile")
         {
             return false;
+        }
+        if(mainPeepComponent.hasJob(Type.GetType("PeepRotatingTileInteract"))) //If we detect that we have a PeepRotatingTileInteract that means we also have to check the walls of the rotating tile
+        {
+            PeepRotatingTileInteract peepRotatingTileInteract = mainPeepComponent.getJob(Type.GetType("PeepRotatingTileInteract")) as PeepRotatingTileInteract;
+            return !peepRotatingTileInteract.rotatingTileWallDetected(positionToCheck);
         }
 
         return true;
     }
 
-    
+    public bool isMoving()
+    {
+        return moving;
+    }
 
-    //This isnt even used anymore anywhere. Im gonna leave it here tough for now
-    //private Vector3Int Vector3ToInt(Vector3 vector3)
-    //{
-    //    return new Vector3Int(Mathf.RoundToInt(vector3.x), Mathf.RoundToInt(vector3.y), Mathf.RoundToInt(vector3.z));
-    //}
+
+    
 
     //Not even sure why this is still here. It cant hurt to keep it tough i guess
     //private void move()

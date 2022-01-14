@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{BF3F2D37-4DBA-D7D1-B3DF-672BFD8A592F}</ProjectGuid>
+    <ProjectGuid>{AB125D36-6189-06A1-64AC-877B0DBBAF9A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -53,15 +53,35 @@
     <UnityVersion>2021.1.25f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Peep\Jobs\PeepTileInteraction.cs" />
     <Compile Include="Assets\Scripts\Peep\Jobs\PeepMovement.cs" />
+    <Compile Include="Assets\Scripts\Tiles\Tiles\RotateTile.cs" />
+    <Compile Include="Assets\Scripts\Peep\Jobs\PeepGoalReached.cs" />
+    <Compile Include="Assets\Scripts\Peep\PeepController.cs" />
+    <Compile Include="Assets\Scripts\Tiles\Tiles\WaterTile.cs" />
+    <Compile Include="Assets\Scripts\SceneController.cs" />
+    <Compile Include="Assets\Scripts\CustomUtil.cs" />
+    <Compile Include="Assets\Scripts\AudioController.cs" />
     <Compile Include="Assets\Scripts\Peep\Jobs\Miner.cs" />
-    <Compile Include="Assets\Scripts\WallTile.cs" />
-    <Compile Include="Assets\Scripts\TileController.cs" />
+    <Compile Include="Assets\Scripts\Tiles\Tiles\WallTile.cs" />
+    <Compile Include="Assets\Scripts\Peep\Jobs\Swimmer.cs" />
+    <Compile Include="Assets\Scripts\AnimLoadLevel.cs" />
+    <Compile Include="Assets\Scripts\TrapMarker.cs" />
+    <Compile Include="Assets\Scripts\Tiles\TileController.cs" />
+    <Compile Include="Assets\Scripts\Peep\Jobs\Sacrifice.cs" />
+    <Compile Include="Assets\Scripts\Peep\Jobs\PeepRotatingTileInteract.cs" />
+    <Compile Include="Assets\Scripts\CustomDynamicEvents.cs" />
+    <Compile Include="Assets\Scripts\GamePauseListener.cs" />
+    <Compile Include="Assets\Scripts\Tiles\RotateObjectChild.cs" />
+    <Compile Include="Assets\Scripts\EventReroute.cs" />
+    <Compile Include="Assets\Scripts\DontDestroy.cs" />
+    <Compile Include="Assets\Scripts\Tiles\RotateObject.cs" />
     <Compile Include="Assets\Scripts\Peep\Jobs\JobBase.cs" />
+    <Compile Include="Assets\Scripts\Peep\Jobs\Keyholder.cs" />
+    <Compile Include="Assets\Scripts\GameCoordinator.cs" />
     <Compile Include="Assets\Scripts\Peep\Peep.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -763,6 +783,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{FB7966D5-1799-441A-E0BD-B3337D9D5CB7}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

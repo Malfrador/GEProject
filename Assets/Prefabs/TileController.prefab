@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6334639323566427153}
   - component: {fileID: 6334639323566427154}
+  - component: {fileID: 6844784553613319621}
   m_Layer: 0
   m_Name: TileController
   m_TagString: Untagged
@@ -43,6 +44,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e84482a7b2bc98948bd3601fbb318adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basicBackgroundTile: {fileID: 11400000, guid: 3efdb7d5b3a174f468f2da596749be85, type: 2}
-  pickaxeTileSprite: {fileID: 21300000, guid: 85010bd4f54201d40be76d410f06e4b5, type: 3}
+  basicBackgroundTile: {fileID: 11400000, guid: 371494c691d9d8e43b8f1263c1bd57d7, type: 2}
+  doorTileSprite: {fileID: -6835833040891675529, guid: 4b69e66088c08144cba09ac68f8d56fd, type: 3}
+  vulcanoTraps: []
+  vulcanoSacrificesNeeded: 0
+  pickaxeTileSprite: {fileID: 3120430153331644229, guid: 4b69e66088c08144cba09ac68f8d56fd, type: 3}
   pickaxeScript: Miner
+  goalTileSprite: {fileID: -4635733884241328489, guid: 4b69e66088c08144cba09ac68f8d56fd, type: 3}
+  goalScript: PeepGoalReached
+  rotatingTileSprite: {fileID: -3461317884566586834, guid: 4b69e66088c08144cba09ac68f8d56fd, type: 3}
+  rotatingTileScript: PeepRotatingTileInteract
+  keyTileSprite: {fileID: 21300000, guid: 026dd37918023eb4f920f4a09ecda4f8, type: 3}
+  keyTileScript: Keyholder
+  vulcanoSprite: {fileID: 21300000, guid: b518dc3cb4cadaf4697cf10c73389922, type: 3}
+  vulcanoScript: Sacrifice
+--- !u!114 &6844784553613319621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6334639323566427155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce8ed8f37357e7343a112781c72dbc89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
