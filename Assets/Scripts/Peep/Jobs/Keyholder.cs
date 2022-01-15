@@ -19,11 +19,14 @@ public class Keyholder : JobBase
         tileMap = peepComponent.tileMap;
 
         //Set sprite of Peep to reflect new Keyholder
-        gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures/Dev/Placeholder_Character_Keyholder");
+        gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Resources/Textures/Dev/character_with_key");
 
 
         // Revert the Key tile to a normal tile
         tileMap.SetTile(tileMap.WorldToCell(transform.position), tileController.basicBackgroundTile);
+
+        //Set Animation Bool to true
+        gameObject.GetComponent<Animator>().SetBool("key", true);
     }
 
     override public void doTask(bool oncePerTileCheck)
@@ -38,11 +41,15 @@ public class Keyholder : JobBase
             // - Revert back to a peep without the key
             if(tileMap.GetSprite(tileMap.WorldToCell(transform.position + transform.right)) == tileController.doorTileSprite)
             {
+                //Set Animation Bool to true
+                gameObject.GetComponent<Animator>().SetBool("use_key", true);
+
                 //Set the tile infront of use back to normal tile
                 tileMap.SetTile(tileMap.WorldToCell(transform.position + transform.right), tileController.basicBackgroundTile);
 
+
                 //Revert back to being a normal peep
-                gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures/Dev/Placeholder_Character"); //Do this back to peep?
+                gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Resources/Textures/Dev/character"); //Do this back to peep?
                 peepComponent.removeScripts("Keyholder");
             }
         }
