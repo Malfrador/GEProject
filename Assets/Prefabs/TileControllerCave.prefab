@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &389657421176759861
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8786885111914966004}
+  - component: {fileID: 7251576269396916815}
+  - component: {fileID: 6691468328164174650}
+  m_Layer: 0
+  m_Name: TileControllerCave
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8786885111914966004
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389657421176759861}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7251576269396916815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389657421176759861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e84482a7b2bc98948bd3601fbb318adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basicBackgroundTile: {fileID: 11400000, guid: 724ac94952d44f14dbe1229cfec0997a, type: 2}
+  doorTileSprite: {fileID: 4693229615213681258, guid: d68988fad4acba644971eb69b38cf669, type: 3}
+  vulcanoTraps: []
+  vulcanoSacrificesNeeded: 0
+  pickaxeTileSprite: {fileID: -2288153114725293722, guid: d68988fad4acba644971eb69b38cf669, type: 3}
+  pickaxeScript: Miner
+  goalTileSprite: {fileID: 7120861854932986783, guid: d68988fad4acba644971eb69b38cf669, type: 3}
+  goalScript: PeepGoalReached
+  rotatingTileSprite: {fileID: 2874684860851452276, guid: d68988fad4acba644971eb69b38cf669, type: 3}
+  rotatingTileScript: PeepRotatingTileInteract
+  keyTileSprite: {fileID: 0}
+  keyTileScript: Keyholder
+  vulcanoSprite: {fileID: 0}
+  vulcanoScript: Sacrifice
+--- !u!114 &6691468328164174650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389657421176759861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce8ed8f37357e7343a112781c72dbc89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
