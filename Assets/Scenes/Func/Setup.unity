@@ -2697,6 +2697,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UISource: {fileID: 533987333}
   buttonNoise: {fileID: 8300000, guid: c6d8f2a462bb6ca48b1cabd272c37fed, type: 3}
+  peepDie: {fileID: 0}
+  peepSpawn: {fileID: 8300000, guid: a77122291ec816148be68c8722802237, type: 3}
+  peepFinish: {fileID: 8300000, guid: 09a2d2b2563ac044f889e0d8d1ed534a, type: 3}
+  gameWon: {fileID: 8300000, guid: 27f307866deee2e4eb887c0699e7dd2e, type: 3}
+  gameLost: {fileID: 0}
 --- !u!1 &1519392856
 GameObject:
   m_ObjectHideFlags: 0
