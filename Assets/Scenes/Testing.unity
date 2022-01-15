@@ -130,17 +130,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3427688547380884361, guid: ee528ad9202e65141b1c3ca1e052c0e2, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5955627168925780810, guid: ee528ad9202e65141b1c3ca1e052c0e2, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -7628202989417265430, guid: d559432499f5b56489c9f23aca115c5e, type: 3}
+      objectReference: {fileID: 21300000, guid: 6616d6ffc11874048b90dfe27a00395f, type: 3}
     - target: {fileID: 6855553188271230794, guid: ee528ad9202e65141b1c3ca1e052c0e2, type: 3}
       propertyPath: m_Name
       value: RotatingTile (1)
       objectReference: {fileID: 0}
     - target: {fileID: 6855553188271230798, guid: ee528ad9202e65141b1c3ca1e052c0e2, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6855553188271230798, guid: ee528ad9202e65141b1c3ca1e052c0e2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -193,7 +197,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6334639323566427153, guid: e6e24e899cc04834f89c32c2a7705ffb, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6334639323566427153, guid: e6e24e899cc04834f89c32c2a7705ffb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -254,7 +258,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7907586014223595353, guid: 0cdd3774604169540b571556fbd97cca, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7907586014223595353, guid: 0cdd3774604169540b571556fbd97cca, type: 3}
       propertyPath: m_LocalPosition.x
@@ -317,10 +321,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3427688547380884361, guid: ee528ad9202e65141b1c3ca1e052c0e2, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5955627168925780810, guid: ee528ad9202e65141b1c3ca1e052c0e2, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 4892568909625412727, guid: d559432499f5b56489c9f23aca115c5e, type: 3}
+      objectReference: {fileID: 21300000, guid: ef181376753718e41a48a03968687c1f, type: 3}
     - target: {fileID: 6855553188271230794, guid: ee528ad9202e65141b1c3ca1e052c0e2, type: 3}
       propertyPath: m_Name
       value: RotatingTile (2)
@@ -7214,10 +7222,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3427688547380884361, guid: ee528ad9202e65141b1c3ca1e052c0e2, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5955627168925780810, guid: ee528ad9202e65141b1c3ca1e052c0e2, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 4892568909625412727, guid: d559432499f5b56489c9f23aca115c5e, type: 3}
+      objectReference: {fileID: 21300000, guid: ef181376753718e41a48a03968687c1f, type: 3}
     - target: {fileID: 6855553188271230794, guid: ee528ad9202e65141b1c3ca1e052c0e2, type: 3}
       propertyPath: m_Name
       value: RotatingTile
