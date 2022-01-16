@@ -23,6 +23,7 @@ public class GameCoordinator : MonoBehaviour
     private Tilemap tileMap;
     private TileController tileController;
     private PeepController peepController;
+    private AudioController audioController;
 
     private float timeBetweenLastSpawn = 9999; //Is setto high number so a peep instantly spawns when level starts
     private bool gameRunning = true;
@@ -33,7 +34,7 @@ public class GameCoordinator : MonoBehaviour
     {
         DontDestroyOnLoad(menuCanvas); //Has to be done here because both canvases are not enabled when starting the game
         DontDestroyOnLoad(gameCanvas);
-
+        audioController = gameObject.GetComponent<AudioController>();
 
         //DEBUG REMOVE 
         OnLevelWasLoaded();
@@ -137,7 +138,7 @@ public class GameCoordinator : MonoBehaviour
         {
             //Find ReferenceCamera and set position and size accordingly
             Camera referenceCam = null;
-            Camera[] cameras = Resources.FindObjectsOfTypeAll<Camera>(); //Also searches for/in inactive gameobjects
+            Camera[] cameras = FindObjectsOfType<Camera>();
             foreach(Camera cam in cameras)
             {
                 if(cam.gameObject.name == "ReferenceCamera")
@@ -149,6 +150,7 @@ public class GameCoordinator : MonoBehaviour
             {
                 mainCamera.transform.position = new Vector3(referenceCam.transform.position.x, referenceCam.transform.position.y, -10);
                 mainCamera.orthographicSize = referenceCam.orthographicSize;
+                referenceCam.gameObject.SetActive(false);
             }
         }
         gameRunning = true;
@@ -173,6 +175,7 @@ public class GameCoordinator : MonoBehaviour
         // - Set the peepcontroller for the new peep
         // - Set the correct rotation, the peep looks to the right with 0 'z' rotation, add +90 onto the rotation of our spawnPoint transform
         // - Set the right position
+        // - Play the sound
 
         //I think this is not necessary
         // - Activate the new Peep (the components of the peep expect the tilemap and tilecontroller to be assigned at Start() so the prefab is deactivated
@@ -190,6 +193,7 @@ public class GameCoordinator : MonoBehaviour
         newPeep.GetComponent<Peep>().lookDirection = CustomUtil.angleToLookDir(Mathf.RoundToInt(spawnPoint.rotation.eulerAngles.z) + 90);
         newPeep.transform.rotation = Quaternion.Euler(0, 0, spawnPoint.rotation.eulerAngles.z + 90.0f);
         newPeep.transform.position = spawnPoint.position;
+        audioController.playClip("peepSpawn");
 
         newPeep.name = newPeep.name + numberOfPeepsSpawned.ToString(); //DEBUG REMOVE
         numberOfPeepsSpawned++;
@@ -204,6 +208,8 @@ public class GameCoordinator : MonoBehaviour
         {
             Debug.Log("Level won");
         }
+
+        audioController.playClip("peepFinish");
     }
 
     private void levelWon()
@@ -211,7 +217,7 @@ public class GameCoordinator : MonoBehaviour
         //For now this just loads the next level
         //In the future this should obviously pause the game and call something in the ui
         //And then the ui calls the level loading 
-
+        audioController.playClip("gameWon");
         gameObject.GetComponent<SceneController>().loadNextScene();
 
     }

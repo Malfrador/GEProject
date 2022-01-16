@@ -20,15 +20,15 @@ public class PeepRotatingTileInteract : JobBase
             transform.parent = null;
             gameObject.GetComponent<Peep>().removeScripts("PeepRotatingTileInteract");
         }
+    }
 
-
-
+    private void Awake()
+    {
         //This script gets attached to the peep it has just entered the tile infront of a rotating tile object
         //Thus we can just immediatly block movement and wait for our turn to enter the rotating tile object
         peepMovement = gameObject.GetComponent<PeepMovement>();
         peepMovement.blocked = true;
     }
-
 
     public override void doTask(bool oncePerTileCheck)
     {
@@ -57,7 +57,12 @@ public class PeepRotatingTileInteract : JobBase
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 1f);
             if (hit.collider != null)
             {
-                rotateObject = hit.collider.gameObject.GetComponent<RotateObject>();
+                GameObject rotatingTileObject = hit.collider.gameObject;
+                if(LayerMask.LayerToName(rotatingTileObject.layer) != "RotatingTileWalls") //If the gameobject isnt in the layer rotatingtilewalls that means our hit.collider is on the child of the rotating tile
+                {
+                    rotatingTileObject = rotatingTileObject.transform.parent.gameObject;
+                }
+                rotateObject = rotatingTileObject.GetComponent<RotateObject>();
             }
             else
             {
