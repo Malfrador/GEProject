@@ -45,19 +45,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basicBackgroundTile: {fileID: 11400000, guid: 371494c691d9d8e43b8f1263c1bd57d7, type: 2}
-  doorTileSprite: {fileID: -6835833040891675529, guid: 4b69e66088c08144cba09ac68f8d56fd, type: 3}
+  doorTileSprite: {fileID: -4635733884241328489, guid: 4b69e66088c08144cba09ac68f8d56fd, type: 3}
   destructibleTileSprite: {fileID: 0}
   vulcanoTraps: []
   vulcanoSacrificesNeeded: 0
-  pickaxeTileSprite: {fileID: 3120430153331644229, guid: 4b69e66088c08144cba09ac68f8d56fd, type: 3}
+  pickaxeTileSprite: {fileID: 418549969255767875, guid: 4b69e66088c08144cba09ac68f8d56fd, type: 3}
   pickaxeScript: Miner
-  goalTileSprite: {fileID: -4635733884241328489, guid: 4b69e66088c08144cba09ac68f8d56fd, type: 3}
+  goalTileSprite: {fileID: -6835833040891675529, guid: 4b69e66088c08144cba09ac68f8d56fd, type: 3}
   goalScript: PeepGoalReached
   rotatingTileSprite: {fileID: 3146699894309173378, guid: 4b69e66088c08144cba09ac68f8d56fd, type: 3}
   rotatingTileScript: PeepRotatingTileInteract
-  keyTileSprite: {fileID: 21300000, guid: 026dd37918023eb4f920f4a09ecda4f8, type: 3}
+  keyTileSprite: {fileID: -1092095144919972410, guid: 4b69e66088c08144cba09ac68f8d56fd, type: 3}
   keyTileScript: Keyholder
-  vulcanoSprite: {fileID: 21300000, guid: b518dc3cb4cadaf4697cf10c73389922, type: 3}
+  vulcanoSprite: {fileID: -3255158748285974433, guid: 4b69e66088c08144cba09ac68f8d56fd, type: 3}
   vulcanoScript: Sacrifice
   lavaSprite: {fileID: 0}
   lavaScript: 

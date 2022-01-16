@@ -134,6 +134,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: TileControllerCave
       objectReference: {fileID: 0}
+    - target: {fileID: 7251576269396916815, guid: 0498eab78b0abfe409cd553804dc5e93, type: 3}
+      propertyPath: lavaSprite
+      value: 
+      objectReference: {fileID: 1945679485064896563, guid: d68988fad4acba644971eb69b38cf669, type: 3}
+    - target: {fileID: 7251576269396916815, guid: 0498eab78b0abfe409cd553804dc5e93, type: 3}
+      propertyPath: keyTileSprite
+      value: 
+      objectReference: {fileID: -3432670950961655630, guid: d68988fad4acba644971eb69b38cf669, type: 3}
+    - target: {fileID: 7251576269396916815, guid: 0498eab78b0abfe409cd553804dc5e93, type: 3}
+      propertyPath: vulcanoSprite
+      value: 
+      objectReference: {fileID: -5544272681550799471, guid: d68988fad4acba644971eb69b38cf669, type: 3}
     - target: {fileID: 8786885111914966004, guid: 0498eab78b0abfe409cd553804dc5e93, type: 3}
       propertyPath: m_RootOrder
       value: 1

@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   basicBackgroundTile: {fileID: 11400000, guid: 724ac94952d44f14dbe1229cfec0997a, type: 2}
   doorTileSprite: {fileID: 4693229615213681258, guid: d68988fad4acba644971eb69b38cf669, type: 3}
+  destructibleTileSprite: {fileID: 0}
   vulcanoTraps: []
   vulcanoSacrificesNeeded: 0
   pickaxeTileSprite: {fileID: -2288153114725293722, guid: d68988fad4acba644971eb69b38cf669, type: 3}
@@ -54,10 +55,12 @@ MonoBehaviour:
   goalScript: PeepGoalReached
   rotatingTileSprite: {fileID: 2874684860851452276, guid: d68988fad4acba644971eb69b38cf669, type: 3}
   rotatingTileScript: PeepRotatingTileInteract
-  keyTileSprite: {fileID: 0}
+  keyTileSprite: {fileID: -3432670950961655630, guid: d68988fad4acba644971eb69b38cf669, type: 3}
   keyTileScript: Keyholder
-  vulcanoSprite: {fileID: 0}
+  vulcanoSprite: {fileID: -5544272681550799471, guid: d68988fad4acba644971eb69b38cf669, type: 3}
   vulcanoScript: Sacrifice
+  lavaSprite: {fileID: 1945679485064896563, guid: d68988fad4acba644971eb69b38cf669, type: 3}
+  lavaScript: 
 --- !u!114 &6691468328164174650
 MonoBehaviour:
   m_ObjectHideFlags: 0
