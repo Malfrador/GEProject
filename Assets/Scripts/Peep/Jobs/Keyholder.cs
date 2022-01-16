@@ -41,8 +41,9 @@ public class Keyholder : JobBase
             // - Revert back to a peep without the key
             if(tileMap.GetSprite(tileMap.WorldToCell(transform.position + transform.right)) == tileController.doorTileSprite)
             {
-                //Set Animation Bool to true
+                //Set Animation Bool to true and false so that the animations plays 1 time
                 gameObject.GetComponent<Animator>().SetBool("use_key", true);
+                gameObject.GetComponent<Animator>().SetBool("use_key", false);
 
                 //Set the tile infront of use back to normal tile
                 tileMap.SetTile(tileMap.WorldToCell(transform.position + transform.right), tileController.basicBackgroundTile);

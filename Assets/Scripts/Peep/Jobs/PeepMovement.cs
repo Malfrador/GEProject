@@ -321,6 +321,8 @@ public class PeepMovement : JobBase
             if(tilemapForSprite.GetSprite(tilemapForSprite.WorldToCell(positionToCheck)) == tileController.destructibleTileSprite && mainPeepComponent.hasJob(Type.GetType("Miner")))
             {
                 tilemapForSprite.SetTile(tilemapForSprite.WorldToCell(positionToCheck), tileController.basicBackgroundTile);
+                gameObject.GetComponent<Animator>().SetBool("use_pickaxe", true);
+                gameObject.GetComponent<Animator>().SetBool("use_pickaxe", false);
                 return true;
             }
             return false;
