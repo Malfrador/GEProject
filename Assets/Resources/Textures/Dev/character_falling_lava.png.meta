@@ -11,9 +11,6 @@ TextureImporter:
   - first:
       213: 6434298741971389166
     second: character_falling_lava_2
-  - first:
-      213: -3731790239685096099
-    second: character_falling_lava_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -161,27 +158,6 @@ TextureImporter:
       bones: []
       spriteID: eea82fd8d983b4950800000000000000
       internalID: 6434298741971389166
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: character_falling_lava_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d5dcc438c84063cc0800000000000000
-      internalID: -3731790239685096099
       vertices: []
       indices: 
       edges: []

@@ -11,9 +11,6 @@ TextureImporter:
   - first:
       213: -1372005359007282192
     second: character_falling_water_2
-  - first:
-      213: 2480598971199472893
-    second: character_falling_water_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -161,27 +158,6 @@ TextureImporter:
       bones: []
       spriteID: 0fb407a2568a5fce0800000000000000
       internalID: -1372005359007282192
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: character_falling_water_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: df44b8c1f9bdc6220800000000000000
-      internalID: 2480598971199472893
       vertices: []
       indices: 
       edges: []
