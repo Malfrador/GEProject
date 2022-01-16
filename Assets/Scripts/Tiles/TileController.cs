@@ -22,6 +22,7 @@ public class TileController : MonoBehaviour
     private ArrayList vulcanos = new ArrayList();
     private GameCoordinator gameCoordinator;
 
+    public int peepsSpawnable = 1;
     public Tile basicBackgroundTile; //This is for scripts to replace a tile if the powerup (for example the miner powerup) is exhausted and we want to replace the pickaxe tile with a normal background
     public Sprite doorTileSprite;
     public Sprite destructibleTileSprite;

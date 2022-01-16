@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class GameCoordinator : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class GameCoordinator : MonoBehaviour
     public Camera mainCamera;
     public Canvas menuCanvas;
     public Canvas gameCanvas;
+    public Text peepsLeftText;
     public GameObject blendCanvas;
     public GameObject protoPeep;
     public GameObject trapMarker;
@@ -35,6 +37,7 @@ public class GameCoordinator : MonoBehaviour
         DontDestroyOnLoad(menuCanvas); //Has to be done here because both canvases are not enabled when starting the game
         DontDestroyOnLoad(gameCanvas);
         audioController = gameObject.GetComponent<AudioController>();
+        
 
         //DEBUG REMOVE 
         OnLevelWasLoaded();
@@ -162,11 +165,13 @@ public class GameCoordinator : MonoBehaviour
         tileController = GameObject.FindObjectOfType<TileController>();
         peepController = GameObject.FindObjectOfType<PeepController>();
         winningPeeps = 5;
+        peepsLeftText.text = tileController.peepsSpawnable.ToString();
     }
 
     private void spawnPeep()
     {
         //To spawn a peep we have to
+        // - Check in the TileController (because its unique in every scene) how many peeps are left
         // - Check if the spawnLocation is free
         // - Initialize the Prefab
         // - Set the Tilemap for the new Peep
@@ -177,8 +182,17 @@ public class GameCoordinator : MonoBehaviour
         // - Set the right position
         // - Play the sound
 
-        //I think this is not necessary
-        // - Activate the new Peep (the components of the peep expect the tilemap and tilecontroller to be assigned at Start() so the prefab is deactivated
+        
+        if(tileController.peepsSpawnable > 0)
+        {
+            tileController.peepsSpawnable--;
+            peepsLeftText.text = tileController.peepsSpawnable.ToString();
+        }
+        else
+        {
+            return;
+        }
+
         if (!peepController.isFreePosition(CustomUtil.Vector3ToInt(spawnPoint.position + offsetCorrect)))
         {
             Debug.LogWarning("Game Controller tried to spawn in occupied position");
