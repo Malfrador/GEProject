@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca0fb9c0254fdb74f859162737eeed6b, type: 3}
   m_Name: RotateTile
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -3461317884566586834, guid: 4b69e66088c08144cba09ac68f8d56fd, type: 3}
+  m_Sprite: {fileID: 3146699894309173378, guid: 4b69e66088c08144cba09ac68f8d56fd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

@@ -242,6 +242,15 @@ TextureImporter:
   - first:
       213: 3078200453268373690
     second: Tileset_Cave_16_79
+  - first:
+      213: -4138161068376241645
+    second: Tileset_Cave_16_80
+  - first:
+      213: -2375094313162452222
+    second: Tileset_Cave_16_81
+  - first:
+      213: 4400231013708996765
+    second: Tileset_Cave_16_82
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -1405,7 +1414,7 @@ TextureImporter:
       name: Tileset_Cave_16_51
       rect:
         serializedVersion: 2
-        x: 128
+        x: 96
         y: 144
         width: 16
         height: 16
@@ -1426,7 +1435,7 @@ TextureImporter:
       name: Tileset_Cave_16_52
       rect:
         serializedVersion: 2
-        x: 144
+        x: 128
         y: 144
         width: 16
         height: 16
@@ -1447,7 +1456,7 @@ TextureImporter:
       name: Tileset_Cave_16_53
       rect:
         serializedVersion: 2
-        x: 160
+        x: 144
         y: 144
         width: 16
         height: 16
@@ -1468,8 +1477,8 @@ TextureImporter:
       name: Tileset_Cave_16_54
       rect:
         serializedVersion: 2
-        x: 16
-        y: 128
+        x: 160
+        y: 144
         width: 16
         height: 16
       alignment: 0
@@ -1489,7 +1498,7 @@ TextureImporter:
       name: Tileset_Cave_16_55
       rect:
         serializedVersion: 2
-        x: 144
+        x: 16
         y: 128
         width: 16
         height: 16
@@ -1510,8 +1519,8 @@ TextureImporter:
       name: Tileset_Cave_16_56
       rect:
         serializedVersion: 2
-        x: 16
-        y: 112
+        x: 144
+        y: 128
         width: 16
         height: 16
       alignment: 0
@@ -1531,7 +1540,7 @@ TextureImporter:
       name: Tileset_Cave_16_57
       rect:
         serializedVersion: 2
-        x: 144
+        x: 16
         y: 112
         width: 16
         height: 16
@@ -1552,8 +1561,8 @@ TextureImporter:
       name: Tileset_Cave_16_58
       rect:
         serializedVersion: 2
-        x: 0
-        y: 96
+        x: 64
+        y: 112
         width: 16
         height: 16
       alignment: 0
@@ -1573,8 +1582,8 @@ TextureImporter:
       name: Tileset_Cave_16_59
       rect:
         serializedVersion: 2
-        x: 32
-        y: 96
+        x: 96
+        y: 112
         width: 16
         height: 16
       alignment: 0
@@ -1594,8 +1603,8 @@ TextureImporter:
       name: Tileset_Cave_16_60
       rect:
         serializedVersion: 2
-        x: 128
-        y: 96
+        x: 144
+        y: 112
         width: 16
         height: 16
       alignment: 0
@@ -1615,7 +1624,7 @@ TextureImporter:
       name: Tileset_Cave_16_61
       rect:
         serializedVersion: 2
-        x: 160
+        x: 0
         y: 96
         width: 16
         height: 16
@@ -1636,8 +1645,8 @@ TextureImporter:
       name: Tileset_Cave_16_62
       rect:
         serializedVersion: 2
-        x: 16
-        y: 80
+        x: 32
+        y: 96
         width: 16
         height: 16
       alignment: 0
@@ -1657,8 +1666,8 @@ TextureImporter:
       name: Tileset_Cave_16_63
       rect:
         serializedVersion: 2
-        x: 144
-        y: 80
+        x: 128
+        y: 96
         width: 16
         height: 16
       alignment: 0
@@ -1678,8 +1687,8 @@ TextureImporter:
       name: Tileset_Cave_16_64
       rect:
         serializedVersion: 2
-        x: 16
-        y: 64
+        x: 160
+        y: 96
         width: 16
         height: 16
       alignment: 0
@@ -1699,8 +1708,8 @@ TextureImporter:
       name: Tileset_Cave_16_65
       rect:
         serializedVersion: 2
-        x: 144
-        y: 64
+        x: 16
+        y: 80
         width: 16
         height: 16
       alignment: 0
@@ -1720,8 +1729,8 @@ TextureImporter:
       name: Tileset_Cave_16_66
       rect:
         serializedVersion: 2
-        x: 0
-        y: 48
+        x: 144
+        y: 80
         width: 16
         height: 16
       alignment: 0
@@ -1741,8 +1750,8 @@ TextureImporter:
       name: Tileset_Cave_16_67
       rect:
         serializedVersion: 2
-        x: 32
-        y: 48
+        x: 16
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -1762,8 +1771,8 @@ TextureImporter:
       name: Tileset_Cave_16_68
       rect:
         serializedVersion: 2
-        x: 128
-        y: 48
+        x: 144
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -1783,7 +1792,7 @@ TextureImporter:
       name: Tileset_Cave_16_69
       rect:
         serializedVersion: 2
-        x: 160
+        x: 0
         y: 48
         width: 16
         height: 16
@@ -1804,8 +1813,8 @@ TextureImporter:
       name: Tileset_Cave_16_70
       rect:
         serializedVersion: 2
-        x: 16
-        y: 32
+        x: 32
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -1825,8 +1834,8 @@ TextureImporter:
       name: Tileset_Cave_16_71
       rect:
         serializedVersion: 2
-        x: 144
-        y: 32
+        x: 128
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -1846,8 +1855,8 @@ TextureImporter:
       name: Tileset_Cave_16_72
       rect:
         serializedVersion: 2
-        x: 0
-        y: 16
+        x: 160
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -1868,7 +1877,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 16
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -1888,8 +1897,8 @@ TextureImporter:
       name: Tileset_Cave_16_74
       rect:
         serializedVersion: 2
-        x: 128
-        y: 16
+        x: 144
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -1909,7 +1918,7 @@ TextureImporter:
       name: Tileset_Cave_16_75
       rect:
         serializedVersion: 2
-        x: 144
+        x: 0
         y: 16
         width: 16
         height: 16
@@ -1930,8 +1939,8 @@ TextureImporter:
       name: Tileset_Cave_16_76
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 16
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -1951,8 +1960,8 @@ TextureImporter:
       name: Tileset_Cave_16_77
       rect:
         serializedVersion: 2
-        x: 16
-        y: 0
+        x: 128
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -1972,8 +1981,8 @@ TextureImporter:
       name: Tileset_Cave_16_78
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
+        x: 144
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -1993,7 +2002,7 @@ TextureImporter:
       name: Tileset_Cave_16_79
       rect:
         serializedVersion: 2
-        x: 144
+        x: 0
         y: 0
         width: 16
         height: 16
@@ -2006,6 +2015,69 @@ TextureImporter:
       bones: []
       spriteID: ab00284d007f7ba20800000000000000
       internalID: 3078200453268373690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_Cave_16_80
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31a4518ee6c4296c0800000000000000
+      internalID: -4138161068376241645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_Cave_16_81
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 203d6e35e48f90fd0800000000000000
+      internalID: -2375094313162452222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_Cave_16_82
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9028c52bc2c01d30800000000000000
+      internalID: 4400231013708996765
       vertices: []
       indices: 
       edges: []

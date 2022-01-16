@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aee8236a3796d3840b35175c06ffe478, type: 3}
   m_Name: WallEndBottom
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -7816557379846088008, guid: 4b69e66088c08144cba09ac68f8d56fd, type: 3}
+  m_Sprite: {fileID: 7926191844658582671, guid: 4b69e66088c08144cba09ac68f8d56fd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
