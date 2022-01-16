@@ -27,7 +27,6 @@ public class PeepTileInteraction : JobBase
             {
                 peepComponent.addScript(tileController.getScriptName(tempSprite));
             }
-            Debug.Log(tilemap.GetTile(tilemap.WorldToCell(transform.position)).GetType().ToString());
             if(tilemap.GetTile(tilemap.WorldToCell(transform.position)).GetType().ToString() == "WaterTile")
             {
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right);
@@ -38,9 +37,18 @@ public class PeepTileInteraction : JobBase
                         return;
                     }
                 }
-                peepComponent.die();
-
+                gameObject.GetComponent<Animator>().SetBool("water", true);
+                StartCoroutine(Animation());
             }
         }
+    }
+
+    private IEnumerator Animation()
+    {
+
+        //wait for the animation to finish
+        gameObject.GetComponent<PeepMovement>().enabled = false;
+        yield return new WaitForSeconds(2f);
+        gameObject.GetComponent<Peep>().die();
     }
 }
