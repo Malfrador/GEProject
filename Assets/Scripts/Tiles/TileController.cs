@@ -24,6 +24,7 @@ public class TileController : MonoBehaviour
 
     public Tile basicBackgroundTile; //This is for scripts to replace a tile if the powerup (for example the miner powerup) is exhausted and we want to replace the pickaxe tile with a normal background
     public Sprite doorTileSprite;
+    public Sprite destructibleTileSprite;
 
     public Vector2[] vulcanoTraps; //These are the positions of the traps that x amount of peeps sacrificed in a vulcano can unlock
     public int vulcanoSacrificesNeeded;

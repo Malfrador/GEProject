@@ -318,6 +318,11 @@ public class PeepMovement : JobBase
     {
         if (tilemapForSprite.GetTile(tilemapForSprite.WorldToCell(positionToCheck)).GetType().ToString() == "WallTile")
         {
+            if(tilemapForSprite.GetSprite(tilemapForSprite.WorldToCell(positionToCheck)) == tileController.destructibleTileSprite && mainPeepComponent.hasJob(Type.GetType("Miner")))
+            {
+                tilemapForSprite.SetTile(tilemapForSprite.WorldToCell(positionToCheck), tileController.basicBackgroundTile);
+                return true;
+            }
             return false;
         }
         if(mainPeepComponent.hasJob(Type.GetType("PeepRotatingTileInteract"))) //If we detect that we have a PeepRotatingTileInteract that means we also have to check the walls of the rotating tile
