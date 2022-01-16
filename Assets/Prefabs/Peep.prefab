@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -1162057999089958757}
   - component: {fileID: 5432016611752501064}
   - component: {fileID: 4647257468969884162}
-  - component: {fileID: 5742356501286059174}
+  - component: {fileID: -8797864451606063023}
   m_Layer: 0
   m_Name: Peep
   m_TagString: Peep
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 1646375585
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b4e96f2cfb05ebd4998161fbd109250e, type: 3}
+  m_Sprite: {fileID: 7152930139536384079, guid: cc739ec871187f54fa434bfd1fb99bec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 855962539253237894}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9265a10ae58fdc46bb9d48c16efd98d, type: 3}
   m_Name: 
@@ -134,18 +134,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca0525acf1ebdc34389814d90aeafc21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5742356501286059174
-MonoBehaviour:
+--- !u!95 &-8797864451606063023
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 855962539253237894}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 986416889c2d1f64e833c62eb0451c94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  disableOnPause:
-  - {fileID: -1162057999089958757}
-  - {fileID: 5432016611752501064}
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e064c38259b630e468ea0741a3266f50, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

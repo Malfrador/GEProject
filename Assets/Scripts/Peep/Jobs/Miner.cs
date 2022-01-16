@@ -16,10 +16,13 @@ public class Miner : JobBase
         tileMap = peepComponent.tileMap;
 
         //Set sprite of Peep to reflect new miner job
-        gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures/Dev/Placeholder_Character_Miner"); //Sprite of Miner is hard coded here. No bueno D:
+        gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures/Dev/character_with_pickaxe"); //Sprite of Miner is hard coded here. No bueno D:
 
         //Revert the miner tile to a normal tile
         tileMap.SetTile(tileMap.WorldToCell(transform.position), tileController.basicBackgroundTile); //TODO: Put the worldtocell functions into peepmovement since it has to do with movement and make a tilecontroller.getbackgroundtile
+
+        //Set Animation Bool to true
+        gameObject.GetComponent<Animator>().SetBool("pickaxe",true);
     }
 
     override public void doTask(bool oncePerTileCheck)

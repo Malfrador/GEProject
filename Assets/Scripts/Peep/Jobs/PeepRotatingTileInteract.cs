@@ -144,6 +144,8 @@ public class PeepRotatingTileInteract : JobBase
         if(gameObject.GetComponent<Peep>().hasJob(Type.GetType("Miner")))
         {
             rotateObject.ChangeShape(hit.collider as BoxCollider2D);
+            gameObject.GetComponent<Animator>().SetBool("use_pickaxe", true);
+            gameObject.GetComponent<Animator>().SetBool("use_pickaxe", false);
         }
         else
         {
