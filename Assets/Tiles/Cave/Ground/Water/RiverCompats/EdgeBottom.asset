@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2374d8f916a2b9846971f5533d0e2306, type: 3}
   m_Name: EdgeBottom
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -8885383466372712069, guid: d68988fad4acba644971eb69b38cf669, type: 3}
+  m_Sprite: {fileID: 1847266104246891904, guid: d68988fad4acba644971eb69b38cf669, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
