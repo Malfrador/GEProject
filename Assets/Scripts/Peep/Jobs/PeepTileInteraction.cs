@@ -29,8 +29,17 @@ public class PeepTileInteraction : JobBase
             }
             if(tilemap.WorldToCell(transform.position).GetType().ToString() == "WaterTile")
             {
-                peepComponent.die();
+                gameObject.GetComponent<Animator>().SetBool("water", true);
+                StartCoroutine(Animation());
             }
         }
+    }
+    private IEnumerator Animation()
+    {
+
+        //wait for the animation to finish
+        gameObject.GetComponent<PeepMovement>().enabled = false;
+        yield return new WaitForSeconds(2f);
+        gameObject.GetComponent<Peep>().die();
     }
 }
