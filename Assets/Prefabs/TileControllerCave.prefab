@@ -44,10 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e84482a7b2bc98948bd3601fbb318adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  peepsSpawnable: 1
   basicBackgroundTile: {fileID: 11400000, guid: 724ac94952d44f14dbe1229cfec0997a, type: 2}
   doorTileSprite: {fileID: 4693229615213681258, guid: d68988fad4acba644971eb69b38cf669, type: 3}
-  destructibleTileSprite: {fileID: 0}
+  destructibleTileSprite: {fileID: 41021057898776520, guid: d68988fad4acba644971eb69b38cf669, type: 3}
   vulcanoTraps: []
+  raftPositions: []
   vulcanoSacrificesNeeded: 0
   pickaxeTileSprite: {fileID: -2288153114725293722, guid: d68988fad4acba644971eb69b38cf669, type: 3}
   pickaxeScript: Miner
@@ -61,6 +63,8 @@ MonoBehaviour:
   vulcanoScript: Sacrifice
   lavaSprite: {fileID: 1945679485064896563, guid: d68988fad4acba644971eb69b38cf669, type: 3}
   lavaScript: 
+  raftSprite: {fileID: 0}
+  raftScript: 
 --- !u!114 &6691468328164174650
 MonoBehaviour:
   m_ObjectHideFlags: 0
