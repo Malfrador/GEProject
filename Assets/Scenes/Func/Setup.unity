@@ -2827,7 +2827,8 @@ MonoBehaviour:
   peepsLeftText: {fileID: 1147386018}
   blendCanvas: {fileID: 1652960633}
   protoPeep: {fileID: 855962539253237894, guid: bab7713abb9583744919726d4fe45f37, type: 3}
-  trapMarker: {fileID: 0}
+  trapMarker: {fileID: 5174449266832415705, guid: 1963c1fadae61724e877c562bc2717f9, type: 3}
+  raft: {fileID: 1048186039502456455, guid: a6304eb6f1ee78c4a98460db79b90e9b, type: 3}
   timeBetweenPeepSpawns: 30
   winningPeeps: 5
 --- !u!4 &1489900670

@@ -28,6 +28,7 @@ public class TileController : MonoBehaviour
     public Sprite destructibleTileSprite;
 
     public Vector2[] vulcanoTraps; //These are the positions of the traps that x amount of peeps sacrificed in a vulcano can unlock
+    public Vector2[] raftPositions;
     public int vulcanoSacrificesNeeded;
 
     public Sprite pickaxeTileSprite; //We use a bunch of public Sprites to set what sprite does what logic function. Then the individual jobs from peep can just access theses sprites
@@ -47,6 +48,9 @@ public class TileController : MonoBehaviour
 
     public Sprite lavaSprite;
     public string lavaScript;
+
+    public Sprite raftSprite;
+    public string raftScript;
 
     private void Start()
     {
@@ -81,6 +85,8 @@ public class TileController : MonoBehaviour
             return true;
         if (spriteToCompare == lavaSprite)
             return true;
+        if (spriteToCompare == raftSprite)
+            return true;
 
         return false;
     }
@@ -104,6 +110,8 @@ public class TileController : MonoBehaviour
             return vulcanoScript;
         if (associatedSprite == lavaSprite)
             return lavaScript;
+        if (associatedSprite == raftSprite)
+            return raftScript;
 
         Debug.LogError("getScriptName() called without matching sprite");
         return null;

@@ -9,7 +9,7 @@ public class PeepTileInteraction : JobBase
     private Peep peepComponent;
     private TileController tileController;
     private Tilemap tilemap;
-    
+    private Vector3 offsetCorrect = new Vector3(0.5f, 0.5f, 0.0f);
 
     private void Start()
     {
@@ -27,9 +27,19 @@ public class PeepTileInteraction : JobBase
             {
                 peepComponent.addScript(tileController.getScriptName(tempSprite));
             }
-            if(tilemap.WorldToCell(transform.position).GetType().ToString() == "WaterTile")
+            Debug.Log(tilemap.GetTile(tilemap.WorldToCell(transform.position)).GetType().ToString());
+            if(tilemap.GetTile(tilemap.WorldToCell(transform.position)).GetType().ToString() == "WaterTile")
             {
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right);
+                if(hit.collider != null)
+                {
+                    if (hit.collider.gameObject.tag == "Raft")
+                    {
+                        return;
+                    }
+                }
                 peepComponent.die();
+
             }
         }
     }

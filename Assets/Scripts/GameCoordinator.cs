@@ -18,6 +18,7 @@ public class GameCoordinator : MonoBehaviour
     public GameObject blendCanvas;
     public GameObject protoPeep;
     public GameObject trapMarker;
+    public GameObject raft;
     public float timeBetweenPeepSpawns = 2; //Time between spawns in seconds
     public int winningPeeps = 5;
 
@@ -76,6 +77,14 @@ public class GameCoordinator : MonoBehaviour
 
     }
 
+    public void activateRaft()
+    {
+        Vector2[] rafts = tileController.raftPositions;
+        foreach(Vector2 newRaftPos in rafts)
+        {
+            Instantiate(raft, newRaftPos, Quaternion.identity);
+        }
+    }
 
     public void causeTrapClearing(Vector2[] trapLocations)
     {
