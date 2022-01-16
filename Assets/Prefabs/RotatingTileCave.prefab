@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6271055103838424020}
   - component: {fileID: -678934985185605929}
   - component: {fileID: -6998522682887506185}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RotatingTileCave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
