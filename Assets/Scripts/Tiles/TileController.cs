@@ -43,6 +43,9 @@ public class TileController : MonoBehaviour
     public Sprite vulcanoSprite; //The sprite of any vulcano that peeps walk into. Each vulcano has its own counter but otherwise they have the same sprite
     public string vulcanoScript; //The script that manages the interaction with the vulcano (i.e dies)
 
+    public Sprite lavaSprite;
+    public string lavaScript;
+
     private void Start()
     {
         gameCoordinator = GameObject.FindObjectOfType<GameCoordinator>();
@@ -74,6 +77,8 @@ public class TileController : MonoBehaviour
             return true;
         if (spriteToCompare == vulcanoSprite)
             return true;
+        if (spriteToCompare == lavaSprite)
+            return true;
 
         return false;
     }
@@ -95,6 +100,8 @@ public class TileController : MonoBehaviour
             return keyTileScript;
         if (associatedSprite == vulcanoSprite)
             return vulcanoScript;
+        if (associatedSprite == lavaSprite)
+            return lavaScript;
 
         Debug.LogError("getScriptName() called without matching sprite");
         return null;
