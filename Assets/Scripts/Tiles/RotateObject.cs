@@ -13,10 +13,6 @@ public class RotateObject : MonoBehaviour
 
     private void Start()
     {
-        childSpriteRot = Mathf.RoundToInt(childSpriteObject.transform.rotation.eulerAngles.z);
-        childSpriteObject.transform.rotation = Quaternion.Euler(0, 0, childSpriteRot);
-        gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-
         //Setup Correct spriteNumber
         for(int i = 0; i < sprites.Length; i++)
         {
@@ -111,7 +107,7 @@ public class RotateObject : MonoBehaviour
                         }
                         break;
 
-                    case 3: //North Direction Collider, Long Tunnel
+                    case 2: //North Direction Collider, Long Tunnel
                         switch (childSpriteRot)
                         {
                             case 0: //North Direction Collider, Long Tunnel Downwards => Nothing
@@ -147,7 +143,7 @@ public class RotateObject : MonoBehaviour
                         }
                         break;
 
-                    case 4: //North Direction Collider, L Shaped Tunnel
+                    case 3: //North Direction Collider, L Shaped Tunnel
                         switch (childSpriteRot)
                         {
                             case 0: //North Direction Collider, L Shaped Tunnel, South-East Connected => T Shaped Tunnel no Rotation
@@ -183,7 +179,7 @@ public class RotateObject : MonoBehaviour
                                 break;
                         }
                         break;
-                    case 5: //North Direction Collider, T Shaped Tunnel
+                    case 4: //North Direction Collider, T Shaped Tunnel
                         switch (childSpriteRot)
                         {
                             case 0: //North Direction Collider, T Shaped Tunnel, Upwards-East Connected => Nothing

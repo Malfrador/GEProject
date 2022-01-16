@@ -126,10 +126,10 @@ public class PeepMovement : JobBase
             {
                 //Check if the peep thats infront of us looks in the same direction
                 //If it doesnt then we can simply turn around
-                Peep otherPeep = peepController.GetPeep(CustomUtil.Vector3ToInt(transform.position + transform.right));
+                Peep otherPeep = peepController.GetPeep(CustomUtil.Vector3ToInt(transform.position + offsetCorrect + transform.right));
                 if(otherPeep != null) //NO Idea why peeps sometimes thing that Forward isnt free and check in empty spots but i dont have time right now to test
                 {
-                    if (otherPeep.lookDirection == mainPeepComponent.lookDirection)
+                    if (otherPeep.lookDirection != mainPeepComponent.lookDirection)
                     {
                         changeDirection(relativeDirection("back"));
                     }
