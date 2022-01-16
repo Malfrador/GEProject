@@ -63,7 +63,7 @@ MonoBehaviour:
   vulcanoScript: Sacrifice
   lavaSprite: {fileID: 0}
   lavaScript: 
-  raftSprite: {fileID: 21300000, guid: 2f4f76242f5744e4ab23ab95ce47d309, type: 3}
+  raftSprite: {fileID: 8350655853217633599, guid: 4b69e66088c08144cba09ac68f8d56fd, type: 3}
   raftScript: Raft
 --- !u!114 &6844784553613319621
 MonoBehaviour:
