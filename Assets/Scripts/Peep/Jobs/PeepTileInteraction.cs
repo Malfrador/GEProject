@@ -27,6 +27,10 @@ public class PeepTileInteraction : JobBase
             {
                 peepComponent.addScript(tileController.getScriptName(tempSprite));
             }
+            if(tilemap.WorldToCell(transform.position).GetType().ToString() == "WaterTile")
+            {
+                peepComponent.die();
+            }
         }
     }
 }
