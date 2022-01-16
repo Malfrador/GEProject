@@ -18,7 +18,7 @@ public class Die : MonoBehaviour
 
         //wait for the animation to finish
         gameObject.GetComponent<PeepMovement>().enabled = false;
-        yield return new WaitForSecondsRealtime(2f);
+        yield return new WaitForSeconds(2f);
         gameObject.GetComponent<Peep>().die();
     }
 }

@@ -237,7 +237,7 @@ public class GameCoordinator : MonoBehaviour
     {
 
         //wait for 3 seconds and then start moving
-        yield return new WaitForSecondsRealtime(3f);
+        yield return new WaitForSeconds(3f);
         peep.GetComponent<PeepMovement>().enabled = true;
     }
 }
