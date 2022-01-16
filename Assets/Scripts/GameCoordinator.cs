@@ -192,7 +192,9 @@ public class GameCoordinator : MonoBehaviour
         newPeep.transform.position = spawnPoint.position;
 
         newPeep.name = newPeep.name + numberOfPeepsSpawned.ToString(); //DEBUG REMOVE
-        numberOfPeepsSpawned++;        
+        numberOfPeepsSpawned++;
+
+        StartCoroutine(Animation(newPeep));//calling method so that the animation can play before the peep moves
     }
 
     public void peepGoalReached()
@@ -225,5 +227,11 @@ public class GameCoordinator : MonoBehaviour
         Time.timeScale = Time.timeScale == 20 ? 1 : 20;
     }
 
+    private IEnumerator Animation(GameObject peep)
+    {
 
+        //wait for 3 seconds and then start moving
+        yield return new WaitForSecondsRealtime(3f);
+        peep.GetComponent<PeepMovement>().enabled = true;
+    }
 }
