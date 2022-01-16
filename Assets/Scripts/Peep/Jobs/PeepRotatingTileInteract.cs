@@ -141,16 +141,16 @@ public class PeepRotatingTileInteract : JobBase
             return false;
 
         //If we're a miner we might as well already mine it 
-        if(gameObject.GetComponent<Peep>().hasJob(Type.GetType("Miner")))
-        {
-            rotateObject.ChangeShape(hit.collider as BoxCollider2D);
-            gameObject.GetComponent<Animator>().SetBool("use_pickaxe", true);
-            gameObject.GetComponent<Animator>().SetBool("use_pickaxe", false);
-        }
-        else
-        {
-            return rotateObject.checkWalls(hit.collider as BoxCollider2D);
-        }
-        return false;
+        //if(gameObject.GetComponent<Peep>().hasJob(Type.GetType("Miner")))
+        //{
+        //    rotateObject.ChangeShape(hit.collider as BoxCollider2D);
+        //    gameObject.GetComponent<Animator>().SetBool("use_pickaxe", true);
+        //    gameObject.GetComponent<Animator>().SetBool("use_pickaxe", false);
+        //}
+        //else
+        //{
+        //    return rotateObject.checkWalls(hit.collider as BoxCollider2D);
+        //}
+        return rotateObject.checkWalls(hit.collider as BoxCollider2D);
     }
 }
