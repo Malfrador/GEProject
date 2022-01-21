@@ -247,7 +247,9 @@ public class GameCoordinator : MonoBehaviour
 
     public void pauseButtonClick()
     {
+        
         pauseEvent.Invoke();
+        Time.timeScale = gameRunning == true ? 0 : 1;
         gameRunning = !gameRunning;
     }
 
