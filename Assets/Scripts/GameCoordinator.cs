@@ -133,6 +133,7 @@ public class GameCoordinator : MonoBehaviour
         // - Find hte PeepController of the level
         // - Set the amount of peeps needed to win this level
 
+        timeBetweenLastSpawn = 9999;
         blendCanvas.GetComponent<Animator>().Play("BlendOutAnimation");
         gameCanvas.enabled = gameObject.GetComponent<SceneController>().playableScene();
         menuCanvas.gameObject.SetActive(false); //Menu Canvas always and only gets enabled by the animator of the main menu background
@@ -173,7 +174,7 @@ public class GameCoordinator : MonoBehaviour
         tileMap = GameObject.FindObjectOfType<Tilemap>();
         tileController = GameObject.FindObjectOfType<TileController>();
         peepController = GameObject.FindObjectOfType<PeepController>();
-        winningPeeps = 5;
+        winningPeeps = 1;
         peepsLeftText.text = tileController.peepsSpawnable.ToString();
     }
 
